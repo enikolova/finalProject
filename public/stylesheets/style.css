@@ -1,8 +1,35 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
-a {
-  color: #00B7FF;
+.navbar img{
+  max-height: 2.25em;
+}
+.is-orange{
+  background-color: #ffbc6b;
+}
+.field{
+  width:100%;
+ 
+}
+.search{
+  width:13em;
+}
+.control{
+  margin-top: 0.75em;
+}
+li{
+  list-style-type: none;
+}
+li:first-of-type{
+  font-weight: bolder;
+}
+#footer{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+#inFoot{
+  margin: auto;
+}
+#inFoot>li{
+  display: inline-block;
+  margin-right: 2em;
 }
