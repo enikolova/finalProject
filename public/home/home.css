@@ -1,0 +1,23 @@
+.fa-star{
+    font-size: 1.25em;
+    color:#ffc600;
+
+}
+.fa-star-o{
+     font-size: 1.25em;
+      color:#eaddc5;
+}
+.column a{
+    font-size: 0.85em;
+    color:grey;
+
+}
+#title{
+margin: 2em auto;
+}
+#vertical{
+    width: 90%;
+    margin: auto;
+    padding:1.5em;
+    border: 0.5px lightgray solid;
+}
