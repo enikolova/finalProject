@@ -7,8 +7,8 @@ angular.module('appRoutes', ['ngRoute']).config(function($routeProvider) {
         templateUrl: 'view/advancedSearch.htm',
         
     })
-    .when('/register', {
-        templateUrl: 'view/register.htm',
+    .when('/login', {
+        templateUrl: 'view/login.htm',
 
     })
     .otherwise({redirectTo : '/'})

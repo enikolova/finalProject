@@ -25,3 +25,7 @@ margin: 2em auto;
 #booksInMain {
     flex-wrap: wrap
 }
+
+.kartinki:hover {
+    filter: brightness(70%);
+}
