@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="node_modules/animate.css/animate.css">
-    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
-    <link rel="stylesheet" href="home.css">
-</head>
-
-<body>
-    <div class="hero is-fluid animated fadeInDown">
+    <div class="hero is-fluid">
         <div class='container has-text-centered' id='title'>
             <h1 class="title">
                 Books at Emazon
@@ -128,7 +116,7 @@
         <div class="tile is-parent">
             <article class="tile is-child box is-10">
                 <div class="content">
-                    <div class="image animated zoomIn">
+                    <div class="image">
                         <img src="https://images-na.ssl-images-amazon.com/images/G/01/kindle/merch/2017/TWIB/TWIB_PBOOKS_hero_desktop_1500x300.jpg"
                             alt="" width="150">
                     </div>
@@ -140,40 +128,54 @@
                         </div>
                     </div>
                     <div class="columns">
-                        <div class="column is-3 col has-text-centered animated fadeInDown">
+                        <div class="column is-3 col has-text-centered ">
                             <a href="">
                                 <img src="https://d1j7sgg6ckvcvy.cloudfront.net/logos/Stephen%20King%20Logo%20for%20Author%20page%20Maroon.png?v=6&scale=both&height=160"
                                     alt="" width="120"></a>
                         </div>
-                        <div class="column is-3 col has-text-centered animated fadeInDown">
+                        <div class="column is-3 col has-text-centered ">
                             <a href=""><img src="https://mark.trademarkia.com/logo-images/rowling/j-k-rowling-85130886.jpg" alt="" width="120"></a>
                         </div>
-                        <div class="column is-3 col has-text-centered animated fadeInDown">
-                            <a href=""><img src="james.jpg" alt="" width="150"></a>
+                        <div class="column is-3 col has-text-centered ">
+                            <a href=""><img src="../img/james.jpg" alt="" width="150"></a>
                         </div>
-                        <div class="column is-3 col has-text-centered animated fadeInDown">
-                            <a href=""><img src="martin.jpg" alt="" width="150"></a>
+                        <div class="column is-3 col has-text-centered ">
+                            <a href=""><img src="../img/martin.jpg" alt="" width="150"></a>
                         </div>
                     </div>
                    
                     <div class="columns">
-                        <div class="column is-3 col has-text-centered animated fadeInDown">
+                        <div class="column is-3 col has-text-centered ">
                             <a href=""><img src="https://preppost.net/wp-content/uploads/2017/04/assinatura-Agatha.png" alt="" width="120"></a>
                         </div>
-                        <div class="column is-3 col has-text-centered animated fadeInDown">
+                        <div class="column is-3 col has-text-centered ">
                             <a href=""><img src="https://conandoyleestate.com/images/arthur-conan-doyle-home-signature.png" alt="" width="180"></a>
                         </div>
-                        <div class="column is-3 col has-text-centered animated fadeInDown">
+                        <div class="column is-3 col has-text-centered ">
                             <a href=""><img src="http://epubbud_uploads.s3.amazonaws.com/13448898/9Q893BWW/index-3_1.png" alt="" width="150"></a>
                         </div>
-                        <div class="column is-3 col has-text-centered animated fadeInDown">
-                            <a href=""><img src="brown.jpg" alt="" width="150"></a>
+                        <div class="column is-3 col has-text-centered ">
+                            <a href=""><img src="../img/brown.jpg" alt="" width="150"></a>
                         </div>
+                    </div>
+                    <hr>
+                </div>
+                <div ng-controller="mainController" class="columns" id = 'booksInMain'>
+                   
+                    <div class="column is-one-quarter" ng-repeat = 'book in books | limitTo:12'>
+                                            
+                        <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" width = '100px'alt="">
+                        <h1 style="width:50%; ">
+                            {{book.volumeInfo.title}}
+                        </h1>
                     </div>
                 </div>
             </article>
+        
         </div>
+        
     </div>
+    
     <div class="container is-fluid">
         <h3 class="subtitle">Books At Emazon</h3>
         <p>
@@ -188,6 +190,5 @@
             as well as the most wished for and most gifted books. We hope you enjoy the Emazon's Books homepage!
         </p>
     </div>
-</body>
-
-</html>
+    
+    

@@ -21,3 +21,7 @@ margin: 2em auto;
     padding:1.5em;
     border: 0.5px lightgray solid;
 }
+
+#booksInMain {
+    flex-wrap: wrap
+}
