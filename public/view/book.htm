@@ -1,11 +1,22 @@
-<div ng-controller="bookController" ng-repeat="book in bookId">
-    <section class = 'section'>
-            <img class = 'image level-left' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" width='100px' alt="">
-            <div> <h1 class = 'title' >
+<div ng-controller="bookController">
+    <section class = 'sectionOfOneBook'>
+            <img class = 'image level-left imgBook' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" width='100px' alt="">
+           
+                <div class = 'bookTitles'>
+                <h1 class = 'title' >
                     {{book.volumeInfo.title}}
                 </h1>
                 <h3 class = 'subtitle'>  {{book.volumeInfo.subtitle}}</h3>
-            </div>
+                
+                <h6>by <span ng-repeat = 'author in book.volumeInfo.authors'> {{author}}{{$last ? '' : ', '}}</span></h6>
+                </div>
+                <section >
+                    <p> <strong>Published by </strong> Published by {{book.volumeInfo.publisher}} on {{book.volumeInfo.publishedDate}}</p>
+                    <p> <strong>Description:</strong> <span ng-if = 'book.volumeInfo.description'>{{book.volumeInfo.description}}</span> <span ng-if = '!book.volumeInfo.description'>No description</span></p> <!--.length > 0 ? {{book.volumeInfo.description}}  :  No description provided -->
+                    <p> <strong>Price:</strong>  {{book.saleInfo.listPrice.amount}} {{book.saleInfo.listPrice.currencyCode}} <span ng-if = '!book.saleInfo.listPrice.amount'>Out of stock</span></p>
+                </section> 
+                    
+            
            
         </section>    
    

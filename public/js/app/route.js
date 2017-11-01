@@ -12,7 +12,7 @@ angular.module('appRoutes', ['ngRoute']).config(function($routeProvider) {
         templateUrl: 'view/login.htm',
 
     })
-    .when('/:book_id', {
+    .when('/book/:book_id', {
         templateUrl: 'view/book.htm',
         controller: 'bookController'
     })

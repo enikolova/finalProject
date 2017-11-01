@@ -18,7 +18,7 @@ router.get('/:book_id', function(req, res, next) {
     
     var id = req.params.book_id;
     collection.find({ _id: id }, {}, function(e, docs) {
-        res.json(docs);
+        res.json(docs[0]);
     });
 });
 
