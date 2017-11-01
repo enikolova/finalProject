@@ -1,0 +1,34 @@
+<div class="section" ng-controller="authorController">
+    <h1 class="title">{{author.name}}</h1>
+    <div class="columns">
+      <div class="column is-3">
+        <img ng-src="{{author.img}}" alt="">
+        <article>
+          <p>
+           {{author.info}}
+          </p>
+        </article>
+      </div>
+      <div class="column">
+        <h3 class="subtitle">Books By {{author.name}}</h3>
+
+        <div class="level-right">
+          <span>Sort by &nbsp</span>
+          <div class="select">
+            <select name="" id="" ng-model="sortBooks">
+          <option value="+saleInfo.listPrice.amount">Price:Low to High</option>
+          <option value="-saleInfo.listPrice.amount">Price:High to Low</option>
+          <option value="+saleInfo.listPrice.amount">Avg Customer Review</option>
+        </select>
+          </div>
+        </div>
+        <div>
+            <ul>
+                <li ng-repeat="book in booksByAuthor | orderBy: sortBooks">
+                    {{book.volumeInfo.title}}---------------------------{{ book.saleInfo.listPrice.amount}}
+                </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
