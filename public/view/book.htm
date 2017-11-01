@@ -1,0 +1,13 @@
+<div ng-controller="bookController" ng-repeat="book in bookId">
+    <section class = 'section'>
+            <img class = 'image level-left' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" width='100px' alt="">
+            <div> <h1 class = 'title' >
+                    {{book.volumeInfo.title}}
+                </h1>
+                <h3 class = 'subtitle'>  {{book.volumeInfo.subtitle}}</h3>
+            </div>
+           
+        </section>    
+   
+   
+   </div>

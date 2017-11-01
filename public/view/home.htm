@@ -251,12 +251,15 @@
             <div ng-controller="mainController" class="columns" id='booksInMain'>
 
                 <div class="column is-one-quarter" ng-repeat='book in books | limitTo:12'>
-                    <a href="">
+                   <div ng-controller="bookController">
+                    <a href="#!/{{book._id}}" ng-click ='findBook(book._id)'>
                         <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" width='100px' alt="">
                         <h1 style="width:50%; ">
                             {{book.volumeInfo.title}}
                         </h1>
                     </a>
+                   </div>
+                   
                 </div>
             </div>
         </article>

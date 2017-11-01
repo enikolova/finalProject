@@ -1,1 +1,1 @@
-angular.module('mainApp', ['appRoutes', 'mainController'])
+angular.module('mainApp', ['appRoutes', 'mainController','bookController'])

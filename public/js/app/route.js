@@ -1,4 +1,5 @@
 angular.module('appRoutes', ['ngRoute']).config(function($routeProvider) {
+
     $routeProvider.when('/', {
         templateUrl: 'view/home.htm',
         controller: 'mainController'
@@ -11,7 +12,11 @@ angular.module('appRoutes', ['ngRoute']).config(function($routeProvider) {
         templateUrl: 'view/login.htm',
 
     })
+    .when('/:book_id', {
+        templateUrl: 'view/book.htm',
+        controller: 'bookController'
+    })
     .otherwise({redirectTo : '/'})
 
-   
+
 })

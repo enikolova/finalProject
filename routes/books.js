@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* GET home page books. */
 router.get('/', function(req, res, next) {
     var db = req.db;
     var collection = db.get('books');
@@ -12,14 +12,15 @@ router.get('/', function(req, res, next) {
     });
 });
 
-// router.get('/:kompanionka_id', function(req, res, next) {
-//     var db = req.db;
-//     var collection = db.get('books');
-//     var id = req.params.kompanionka_id;
-//     collection.find({ _id: id }, {}, function(e, docs) {
-//         res.json(docs);
-//     });
-// });
+router.get('/:book_id', function(req, res, next) {
+    var db = req.db;
+    var collection = db.get('books');
+    
+    var id = req.params.book_id;
+    collection.find({ _id: id }, {}, function(e, docs) {
+        res.json(docs);
+    });
+});
 
 // router.put('/', function(req, res, next) {
 //     var db = req.db;
