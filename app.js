@@ -9,7 +9,8 @@ var monk = require('monk');
 var db = monk('ejechev:qweasd23@ds237475.mlab.com:37475/books')
 // var index = require('./routes/index');
 var users = require('./routes/users');
-var books = require('./routes/books')
+var books = require('./routes/books');
+var authors = require('./routes/authors')
 var app = express();
 
 // view engine setup
@@ -29,7 +30,8 @@ app.use(function(req,res,next) {
 })
 // app.use('/', index);
 app.use('/users', users);
-app.use('/books', books)
+app.use('/books', books);
+app.use('/authors',authors);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
