@@ -23,6 +23,7 @@
           </div>
         </div>
         <div>
+          <br>
             <ul>
                 <li ng-repeat="book in booksByAuthor | orderBy: sortBooks">
                   <div class="columns">
@@ -35,7 +36,8 @@
                        <hr>
                     <h2 class="subtitle">{{ book.saleInfo.listPrice.amount}}{{ book.saleInfo.listPrice.currencyCode}} </h2>
                      <hr>
-                    <p>{{book.volumeInfo.averageRating}}/{{book.volumeInfo.ratingsCount}}</p>
+                     <progress class="progress is-warning" value="{{book.volumeInfo.averageRating}}" max="5"></progress>
+                    <!--<p>{{book.volumeInfo.averageRating}}/{{book.volumeInfo.ratingsCount}}</p>-->
               <hr>
                     </div>
                   </div>
