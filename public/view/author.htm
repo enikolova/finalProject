@@ -14,11 +14,18 @@
 
         <div class="level-right">
           <span>Sort by &nbsp</span>
+<<<<<<< HEAD
           <div >
             <select class="select" name="" id="" ng-model="sortBooks">
           <option value="+saleInfo.listPrice.amount">Price:Low to High</option>
+=======
+          <div class="select">
+            <select name="" id="" ng-model="sortBooks">
+          <option value="+saleInfo.listPrice.amount" >Price:Low to High</option>
+>>>>>>> 043bdbcf43c8ca61e323f3f99cfcb9c0cf588a33
           <option value="-saleInfo.listPrice.amount">Price:High to Low</option>
-          <option value="+volumeInfo.averageRating">Avg Customer Review</option>
+          <option value="+volumeInfo.averageRating">Avg. Customer Review: Low to High</option>
+          <option value="-volumeInfo.averageRating">Avg. Customer Review: High to Low</option>
         </select>
           </div>
         </div>
@@ -26,9 +33,10 @@
           <br>
             <ul>
                 <li ng-repeat="book in booksByAuthor | orderBy: sortBooks">
-                  <div class="columns" ng-if = 'book.saleInfo.listPrice.amount'>
+                  <div class="columns" >
                     <div class="column is-3">
-                      <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="" width="130">
+                      <img ng-if='book.volumeInfo.imageLinks.thumbnail' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="" width="130">
+                      <img ng-if='!book.volumeInfo.imageLinks.thumbnail' ng-src="https://cdn.pixabay.com/photo/2013/07/12/15/20/author-149694_640.png" alt="" width="130">
                       <a href="#!/book/{{book._id}}" class = 'button is-primary' style = 'display:block'> <strong>More info</strong> </a>
                     </div>
                     <div class="column">

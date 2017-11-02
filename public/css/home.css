@@ -20,6 +20,8 @@ margin: 2em auto;
     margin: auto;
     padding:1.5em;
     border: 0.5px lightgray solid;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 #booksInMain {
@@ -56,6 +58,8 @@ margin: 2em auto;
 }
 .buyBookBtn {
     float: right;
+    margin-right: 12px;
+    padding: 10px 40px;
 }
 .imgBook {
     border-radius: 10px;
@@ -65,7 +69,8 @@ margin: 2em auto;
     border-radius: 5px;
     text-align: center;
     padding: 10px;
-    height: 250px;
+    height: 300px;
+    box-sizing: border-box;
 
 }
 .titleOfGrid {
