@@ -251,14 +251,16 @@
             <div ng-controller="mainController" class="columns" id='booksInMain'>
 
                 <div class="column is-one-quarter" ng-repeat='book in books | limitTo:12'>
-                   <div>
                     <a href="#!/book/{{book._id}}">
+                    <div class = 'gridOfBooks'>
+                    
                         <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" width='100px' alt="">
-                        <h1 style="width:50%; ">
+                        <h1 class = 'titleOfGrid'>
                             {{book.volumeInfo.title}}
                         </h1>
-                    </a>
+                   
                    </div>
+                </a>
                    
                 </div>
             </div>

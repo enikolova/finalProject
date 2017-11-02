@@ -60,3 +60,18 @@ margin: 2em auto;
 .imgBook {
     border-radius: 10px;
 }
+.gridOfBooks {
+    border: 1px grey solid;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    height: 250px;
+
+}
+.titleOfGrid {
+    padding-top: 15px;
+}
+
+.gridOfBooks:hover {
+    filter: brightness(80%)
+}

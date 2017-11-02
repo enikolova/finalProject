@@ -26,17 +26,22 @@
           <br>
             <ul>
                 <li ng-repeat="book in booksByAuthor | orderBy: sortBooks">
-                  <div class="columns">
+                  <div class="columns" ng-if = 'book.saleInfo.listPrice.amount'>
                     <div class="column is-3">
                       <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="" width="130">
+                      <a href="#!/book/{{book._id}}" class = 'button is-primary' style = 'display:block'> <strong>More info</strong> </a>
                     </div>
                     <div class="column">
                       <h3 class="subtitle">{{book.volumeInfo.title}}</h3>
                       <h6>by {{book.volumeInfo.authors[0]}}</h6>
                        <hr>
-                    <h2 class="subtitle">{{ book.saleInfo.listPrice.amount}}{{ book.saleInfo.listPrice.currencyCode}} </h2>
+                       <p>
+                        <strong>Price:</strong> {{book.saleInfo.listPrice.amount}} {{book.saleInfo.listPrice.currencyCode}}
+                        <span ng-if='!book.saleInfo.listPrice.amount'>Out of stock</span>
+                    </p>
                      <hr>
-                     <progress class="progress is-warning" value="{{book.volumeInfo.averageRating}}" max="5"></progress>
+                     <label for="progressRating"><span ng-if = 'book.volumeInfo.averageRating'>Average rating:  {{book.volumeInfo.averageRating}}/5</span> <span  ng-if = '!book.volumeInfo.averageRating'> No rating availiable</span></label>
+                     <progress name = 'progressRating' class="progress is-warning" value="{{book.volumeInfo.averageRating}}" max="5" ng-if = 'book.volumeInfo.averageRating'> </progress>
                     <!--<p>{{book.volumeInfo.averageRating}}/{{book.volumeInfo.ratingsCount}}</p>-->
               <hr>
                     </div>
