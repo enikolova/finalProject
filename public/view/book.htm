@@ -28,8 +28,8 @@
                 <strong>Price:</strong> {{book.saleInfo.listPrice.amount}} {{book.saleInfo.listPrice.currencyCode}}
                 <span ng-if='!book.saleInfo.listPrice.amount'>Out of stock</span>
             </p>
-            <a href="" ng-if="!book.saleInfo.listPrice.amount" class="buyBookBtn button is-primary " disabled> Buy</a>
-            <a href="" ng-if="book.saleInfo.listPrice.amount" class='buyBookBtn button is-primary'>Buy</a>
+            <a href="" ng-if="!book.saleInfo.listPrice.amount" class="buyBookBtn button is-primary subtitle" disabled> Buy</a>
+            <a href="" ng-if="book.saleInfo.listPrice.amount" class='buyBookBtn button is-primary subtitle'>Buy</a>
         </section>
 
 
