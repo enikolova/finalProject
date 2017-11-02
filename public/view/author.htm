@@ -18,14 +18,27 @@
             <select name="" id="" ng-model="sortBooks">
           <option value="+saleInfo.listPrice.amount">Price:Low to High</option>
           <option value="-saleInfo.listPrice.amount">Price:High to Low</option>
-          <option value="+saleInfo.listPrice.amount">Avg Customer Review</option>
+          <option value="+volumeInfo.averageRating">Avg Customer Review</option>
         </select>
           </div>
         </div>
         <div>
             <ul>
                 <li ng-repeat="book in booksByAuthor | orderBy: sortBooks">
-                    {{book.volumeInfo.title}}---------------------------{{ book.saleInfo.listPrice.amount}}
+                  <div class="columns">
+                    <div class="column is-3">
+                      <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="" width="130">
+                    </div>
+                    <div class="column">
+                      <h3 class="subtitle">{{book.volumeInfo.title}}</h3>
+                      <h6>by {{book.volumeInfo.authors[0]}}</h6>
+                       <hr>
+                    <h2 class="subtitle">{{ book.saleInfo.listPrice.amount}}{{ book.saleInfo.listPrice.currencyCode}} </h2>
+                     <hr>
+                    <p>{{book.volumeInfo.averageRating}}/{{book.volumeInfo.ratingsCount}}</p>
+              <hr>
+                    </div>
+                  </div>
                 </li>
             </ul>
         </div>
