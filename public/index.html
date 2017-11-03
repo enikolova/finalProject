@@ -28,17 +28,16 @@
       <script src="js/app/controller/mainController.js"></script>
       <script src="js/app/controller/bookController.js"></script>
       <script src="js/app/controller/authorController.js"></script>
-<<<<<<< HEAD
       <script src="js/app/controller/registerController.js"></script>
       <script src="js/app/controller/loginController.js"></script>
+      <script src="js/app/controller/accountController.js"></script>
       
       
-=======
+      
       <script src="js/app/controller/categoryController.js"></script>
->>>>>>> 8e61780215e3c11dec714c68933cc2279ad3e5f9
       
   </head>
-  <body ng-app = 'mainApp' ng-controller="mainController">
+  <body ng-app = 'mainApp' ng-controller="mainController" >
     <header>
       <nav class="navbar is-primary" role="navigation" aria-label="dropdown navigation" data-bulma="navbar">
     <div class="navbar-brand">
@@ -105,11 +104,11 @@
 </div>
     </header>
 
-    <main >
+    <main class = 'hero is-fluid'>
         
     
     
-      <div ng-view>
+      <div ng-view class='container is-fullhd'>
       </div>
 
     </main>
