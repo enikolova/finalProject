@@ -5,4 +5,12 @@ angular.module('mainController', [])
     
     
 });
+
+    $scope.checkLogIn = function() {
+    if(sessionStorage.getItem("user")) {
+        return true
+    } else {
+        return false
+    }
+}
 })

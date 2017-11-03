@@ -34,3 +34,13 @@ li:first-of-type{
   display: inline-block;
   margin-right: 2em;
 }
+
+.errorMsg {
+  margin-top: 15px;
+  color: red;
+}
+
+.successMsg {
+  margin-top: 15px;
+  color: green
+}

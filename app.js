@@ -4,13 +4,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session      = require('express-session');
 var mongodb = require('mongodb');
 var monk = require('monk');
 var db = monk('ejechev:qweasd23@ds237475.mlab.com:37475/books')
 // var index = require('./routes/index');
-var users = require('./routes/users');
+var registration = require('./routes/registration');
 var books = require('./routes/books');
-var authors = require('./routes/authors')
+var authors = require('./routes/authors');
+var login = require('./routes/login');
 var app = express();
 
 // view engine setup
@@ -24,15 +26,26 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: 'secretSession'}))
 app.use(function(req,res,next) {
   req.db = db;
   next();
 })
 
+// function checkLogin(req, res, next) {
+//   if(req.session.userId) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+
 // app.use('/', index);
-app.use('/users', users);
+app.use('/registration', registration);
 app.use('/books', books);
 app.use('/authors',authors);
+app.use('/login', login)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
