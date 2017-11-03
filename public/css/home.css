@@ -36,20 +36,18 @@ margin: 2em auto;
     margin: auto;
     padding: 10px;
 }
-.bookTitles {
+/*.bookTitles {
     display: inline-block;
     margin-left: 200px;
     margin-bottom: 10px;
     padding-top: 48px;
     width: 60%;
     vertical-align: top;
-}
-.imgBook {
-    display: inline-block;
-}
+}*/
+
 .descriptionOfBook {
-    border: 1px solid silver;
-    border-radius: 25px;
+    /*border: 1px solid silver;
+    border-radius: 25px;*/
     text-align: middle;
     padding: 10px;
     box-sizing: border-box;

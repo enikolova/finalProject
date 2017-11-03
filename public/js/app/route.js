@@ -28,7 +28,10 @@ angular.module('appRoutes', ['ngRoute','authorController']).config(function($rou
     })
     .when('/myacc' , {
         templateUrl: 'view/myacc.htm',
-        
+    })
+    .when('/category/:category_name',{
+        templateUrl:'view/booksByCategory.htm',
+        controller:'categoryController'
     })
     .otherwise({redirectTo : '/'})
 
