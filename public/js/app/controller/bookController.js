@@ -4,4 +4,6 @@ angular.module('bookController', [])
     $http.get('http://localhost:4000/books/' + id).then(function(book) {
         $scope.book = book.data;
     });
+
+    
 })

@@ -1,0 +1,97 @@
+<div class="hero is-fluid">
+    <div ng-controller="categoryController" class="columns">
+        <div class="column is-3">
+            <h1 class="subtitle">Show results for</h1>
+            <p class="menu-label">
+                    Authors
+                </p>
+                <hr>
+                <ul class="menu-list" ng-model="filterAuthors">
+                    <li ng-repeat="author in authors">
+                        <a ng-click="changeAuthor(author.name)">{{author.name}}</a>
+                    </li>
+                </ul>
+                 <p class="menu-label">
+                    Avg. Customer Review
+                </p>
+                <ul class="menu-list">
+                    <li>
+                        <a ng-click="change(4)">
+                            <i class=" fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i> &amp UP</a>
+                    </li>
+                    <li>
+                        <a ng-click="change(3)">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i> &amp UP</a>
+                    </li>
+                    <li>
+                        <a ng-click="change(2)">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i> &amp UP</a>
+                    </li>
+                    <li>
+                        <a ng-click="change(1)">
+                            <i class="  fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i> &amp UP</a>
+                    </li>
+                </ul>
+        </div>
+        <div class="column">
+            <h1 class="subtitle">{{category}}</h1>
+            <div>
+                <br>
+                <div class="level-right">
+          <span>Sort by &nbsp</span>
+
+          <div class="select">
+            <select name="" id="" ng-model="sortBooks">
+          <option value="+saleInfo.listPrice.amount" >Price:Low to High</option>
+          <option value="-saleInfo.listPrice.amount">Price:High to Low</option>
+          <option value="+volumeInfo.averageRating">Avg. Customer Review: Low to High</option>
+          <option value="-volumeInfo.averageRating">Avg. Customer Review: High to Low</option>
+        </select>
+          </div>
+        </div>
+                <ul>
+                    <li ng-repeat="book in getBooks(rating)| orderBy: sortBooks |filter: filterAuthors ">
+                        <div class="columns">
+                            <div class="column is-3">
+                                <img ng-if='book.volumeInfo.imageLinks.thumbnail' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="" width="130">
+                                <img ng-if='!book.volumeInfo.imageLinks.thumbnail' ng-src="https://cdn.pixabay.com/photo/2013/07/12/15/20/author-149694_640.png"
+                                    alt="" width="130">
+                                    <a href="#!/book/{{book._id}}" class='button is-primary' style='display:block'> <strong>More info</strong> </a>
+                            </div>
+                            <div class="column">
+                                <h3 class="subtitle">{{book.volumeInfo.title}}</h3>
+                                <h6>by {{book.volumeInfo.authors[0]}}</h6>
+                                <hr>
+                                <p>
+                                    <strong>Price:</strong> {{book.saleInfo.listPrice.amount}} {{book.saleInfo.listPrice.currencyCode}}
+                                    <span ng-if='!book.saleInfo.listPrice.amount'>Out of stock</span>
+                                </p>
+                                <hr>
+                                <label for="progressRating"><span ng-if = 'book.volumeInfo.averageRating'>Average rating:  {{book.volumeInfo.averageRating}}/5</span> <span  ng-if = '!book.volumeInfo.averageRating'> No rating availiable</span></label>
+                                <progress name='progressRating' class="progress is-warning" value="{{book.volumeInfo.averageRating}}" max="5" ng-if='book.volumeInfo.averageRating'>
+                                </progress>
+                                <hr>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

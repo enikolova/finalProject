@@ -14,6 +14,5 @@ angular.module('authorController', [])
                 })
             })
         })
-        $scope.sortBooks = 'saleInfo.listPrice.amount'
-
+        $scope.sortBooks = 'saleInfo.listPrice.amount';
     })

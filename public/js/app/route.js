@@ -20,6 +20,10 @@ angular.module('appRoutes', ['ngRoute','authorController']).config(function($rou
         templateUrl:'view/author.htm',
         controller:'authorController'
     })
+    .when('/category/:category_name',{
+        templateUrl:'view/booksByCategory.htm',
+        controller:'categoryController'
+    })
     .otherwise({redirectTo : '/'})
 
 
