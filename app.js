@@ -17,6 +17,7 @@ var registration = require('./routes/registration');
 var books = require('./routes/books');
 var authors = require('./routes/authors');
 var login = require('./routes/login');
+<<<<<<< HEAD
 
 
 
@@ -59,6 +60,9 @@ passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 });
 
+=======
+var comment=require('./routes/comment');
+>>>>>>> c64af256d026be62667a45e87b8d7485e069d693
 var app = express();
 
 // view engine setup
@@ -107,6 +111,7 @@ app.use('/registration', registration);
 app.use('/books', books);
 app.use('/authors',authors);
 app.use('/login', login)
+app.use('/comments',comment);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

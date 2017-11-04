@@ -39,7 +39,7 @@ angular.module('categoryController', [])
 
                 });
             });
-        }
+        
   $scope.filterAuthors='';
         $scope.sortBooks = 'saleInfo.listPrice.amount'
         $scope.changeAuthor=function(name){
@@ -55,4 +55,5 @@ angular.module('categoryController', [])
            return $scope.filBooks;
        }
       
-    })
+    }
+})
