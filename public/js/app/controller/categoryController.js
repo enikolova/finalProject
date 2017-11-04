@@ -3,9 +3,11 @@ angular.module('categoryController', [])
         var category = location.hash.split("/")[2];
         category = category.split("%20").join(' ');
         $scope.category = category;
+        $scope.loading = true;
         if ($scope.category == "Best Books of 2017") {
             $http.get('http://localhost:4000/books/').then(function (book) {
-               $scope.books = book.data.filter(b =>{
+               
+            $scope.books = book.data.filter(b =>{
                    if(b.volumeInfo.publishedDate)
                 if(b.volumeInfo.publishedDate.indexOf('2017') != -1)
                 return b;
@@ -18,6 +20,7 @@ angular.module('categoryController', [])
                         $scope.authors.push({ name: x.volumeInfo.authors[0] });
 
                 });
+                $scope.loading = false;
             });
 
 
@@ -25,7 +28,7 @@ angular.module('categoryController', [])
         }
         else {
             $http.get('http://localhost:4000/books/category/' + category).then(function (book) {
-
+                $scope.loading = false;
                 $scope.books = book.data;
 
                 $scope.authors = [];

@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../public/js/models/user');
+var passport = require('passport');
+
 var bcrypt = require('bcryptjs')
 
 
@@ -9,7 +11,6 @@ router.get('/:user_id', function(req, res, next) {
     var db = req.db;
     var collection = db.get('users');
     var id = req.params.user_id;
-    
         
     collection.find({ _id: id }, {}, function(e, docs) {
         res.json(docs[0]);
@@ -40,5 +41,20 @@ router.post('/', function(req, res, next) {
     })
 });
 
+// login with facebook
+// router.get('/facebook',
+// passport.authenticate('facebook'));
+
+// router.get('/facebook/return', 
+// passport.authenticate('facebook', { failureRedirect: '#!/login' }),
+// function(req, res) {
+//   res.redirect('/');
+// });
+
+// router.get('/profile',
+// require('connect-ensure-login').ensureLoggedIn(),
+// function(req, res){
+//   res.render('profile', { user: req.user });
+// });
 
 module.exports = router

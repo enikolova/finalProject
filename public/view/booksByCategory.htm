@@ -1,5 +1,16 @@
 <div class="hero is-fluid">
-    <div ng-controller="categoryController" class="columns">
+        <div class="bookshelf_wrapper" ng-show= 'loading'>
+                <ul class="books_list">
+                  <li class="book_item first"></li>
+                  <li class="book_item second"></li>
+                  <li class="book_item third"></li>
+                  <li class="book_item fourth"></li>
+                  <li class="book_item fifth"></li>
+                  <li class="book_item sixth"></li>
+                </ul>
+                <div class="shelf"></div>
+              </div>
+    <div ng-controller="categoryController" class="columns" ng-hide = 'loading'>
         <div class="column is-3">
             <h1 class="subtitle">Show results for</h1>
             <p class="menu-label">
@@ -65,6 +76,7 @@
         </select>
           </div>
         </div>
+        
                 <ul>
                     <li ng-repeat="book in getBooks(rating)| orderBy: sortBooks |filter: filterAuthors ">
                         <div class="columns">
@@ -74,6 +86,7 @@
                                     alt="" width="130">
                                     <a href="#!/book/{{book._id}}" class='button is-primary' style='display:block'> <strong>More info</strong> </a>
                             </div>
+                            
                             <div class="column">
                                 <h3 class="subtitle">{{book.volumeInfo.title}}</h3>
                                 <h6>by {{book.volumeInfo.authors[0]}}</h6>

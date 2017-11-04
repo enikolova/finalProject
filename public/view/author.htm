@@ -25,7 +25,18 @@
           </div>
         </div>
         <div>
-            <div class = 'loader' ng-show= 'loading'></div>
+            
+            <div class="bookshelf_wrapper" ng-show= 'loading'>
+              <ul class="books_list">
+                <li class="book_item first"></li>
+                <li class="book_item second"></li>
+                <li class="book_item third"></li>
+                <li class="book_item fourth"></li>
+                <li class="book_item fifth"></li>
+                <li class="book_item sixth"></li>
+              </ul>
+              <div class="shelf"></div>
+            </div>
           <br>
             <ul>
                 <li ng-repeat="book in booksByAuthor | orderBy: sortBooks">
