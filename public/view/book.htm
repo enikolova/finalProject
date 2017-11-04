@@ -1,49 +1,6 @@
-<!--<div ng-controller="bookController">
-    <section class='sectionOfOneBook'>
-         <div class='bookTitles'>
-                <h1 class='title'>
-                    {{book.volumeInfo.title}}
-                </h1>
-                <h3 class='subtitle'> {{book.volumeInfo.subtitle}}</h3>
-
-                <h6>by
-                    <span ng-repeat='author in book.volumeInfo.authors'> {{author}}{{$last ? '' : ', '}}</span>
-                </h6>
-                
-            </div>
-        <div class="columns">
-        <div class = 'bookHeader column is-4'>
-            <img class='image level-left imgBook' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" width='150px' alt="">
-
-           </div>
-
-        <section class='descriptionOfBook column is-10'>
-            <p>
-                <strong>Published by </strong>  {{book.volumeInfo.publisher}} on {{book.volumeInfo.publishedDate}}</p>
-            <p>
-                <strong>Description:</strong>
-                <span ng-if='book.volumeInfo.description'>{{book.volumeInfo.description}}</span>
-                <span ng-if='!book.volumeInfo.description'>No description</span>
-            </p>
-            length > 0 ? {{book.volumeInfo.description}}  :  No description provided -->
-            <!--<p>
-                <strong>Price:</strong> {{book.saleInfo.listPrice.amount}} {{book.saleInfo.listPrice.currencyCode}}
-                <span ng-if='!book.saleInfo.listPrice.amount'>Out of stock</span>
-            </p>
-            <a href="" ng-if="!book.saleInfo.listPrice.amount" class="buyBookBtn button is-primary subtitle" disabled> Buy</a>
-            <a href="" ng-if="book.saleInfo.listPrice.amount" class='buyBookBtn button is-primary subtitle'>Buy</a>
-        </section>
-
-        <div class='hero'>
-            <h2 class="subtitle">Product details</h2>
-            <p>Pages:{{}}</p>
-        </div>
-
-    </section>
-</div>-->
 
 <div class="tile is-ancestor">
-  <div class="tile is-4 is-vertical is-parent">
+  <div class="tile is-3 is-vertical is-parent">
     <div class="tile is-child box">
      <img class='image level-left imgBook' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" width='150px' alt="">
     </div>
@@ -65,7 +22,7 @@
                 <h3 class='subtitle'> {{book.volumeInfo.subtitle}}</h3>
 
                 <h6>by
-                    <span ng-repeat='author in book.volumeInfo.authors'> {{author}}{{$last ? '' : ', '}}</span>
+                    <span ng-repeat='author in book.volumeInfo.authors'> {{author}}{{last ? '' : ', '}}</span>
                 </h6>
                 <p>
                 <strong>Published by </strong>  {{book.volumeInfo.publisher}} on {{book.volumeInfo.publishedDate}}</p>
@@ -79,8 +36,57 @@
                 <span ng-if='!book.saleInfo.listPrice.amount'>Out of stock</span>
             </p>
             <a href="" ng-if="!book.saleInfo.listPrice.amount" class="buyBookBtn button is-primary subtitle level-right" disabled> Buy</a>
-            <a href="" ng-if="book.saleInfo.listPrice.amount" class='buyBookBtn button is-primary subtitle level-right'>Buy</a>
-           
+            <a href="" ng-if="book.saleInfo.listPrice.amount" class='buyBookBtn button is-primary  subtitle level-right'>Buy</a>
+             </div>
+
+    <div class="tile is-child box">
+            <h2 class="subtitle has-text-weight-semibold">Customer reviews:</h2>
+<article class="media" ng-repeat="comment in comments">
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong class="subtitle">{{comment.title}}</strong>
+        <br>
+            By {{comment.username}}
+            <br>
+            <small>on {{comment.date}}</small>
+        <p> <label for="progressRating"><strong>Average rating:</strong>  {{comment.rating}}/5 </label>
+                                <progress name='progressRating' class="progress is-warning" value="{{comment.rating}}" max="5">
+                                </progress></p>
+       {{comment.text}}
+      </p>
+    </div>
+  </div>
+  <div class="media-right">
+    <button class="delete"></button>
+  </div>
+</article>
+           <article class="media">
+  <div class="media-content">
+      <div class="field">
+  <label class="label">Title</label>
+  <div class="control">
+    <input class="input" type="text"  ng-model="newComment.title" placeholder="Title">
+  </div>
+  <label class="label">Rating</label>
+  <div class="control">
+    <input class="input" type="number" ng-model="newComment.rating" min="0" max="5">
+  </div>
+</div>
+    <div class="field">
+      <p class="control">
+        <textarea class="textarea" name="text" ng-model="newComment.text" placeholder="Add a comment..."></textarea>
+      </p>
+    </div>
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <a class="button is-primary" ng-click="addComment()">Submit</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</article>
     </div>
   </div>
 </div>

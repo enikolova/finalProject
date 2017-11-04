@@ -31,8 +31,9 @@ router.post('/', function(req, res, next) {
         } else {
             if(bcrypt.compareSync(password, data[0].password)) {
                 req.session.userId = data[0]._id
+                req.session.username=data[0].username;
                 
-                res.json({success: true, message: 'Successful login', user: req.session.userId})
+                res.json({success: true, message: 'Successful login',user: req.session.userId})
             }
         }
         
