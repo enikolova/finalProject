@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "animate.css": "^3.5.2",
-    "bcrypt": "^1.0.3",
     "bcrypt-nodejs": "latest",
     "bcryptjs": "^2.4.3",
     "body-parser": "~1.18.2",
