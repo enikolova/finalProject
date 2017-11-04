@@ -3,7 +3,21 @@ var router = express.Router();
 var User = require('../public/js/models/user');
 var bcrypt = require('bcryptjs')
 
-/* POST to register. */
+
+// GET single user
+router.get('/:user_id', function(req, res, next) {
+    var db = req.db;
+    var collection = db.get('users');
+    var id = req.params.user_id;
+    
+        
+    collection.find({ _id: id }, {}, function(e, docs) {
+        res.json(docs[0]);
+    });
+});
+
+
+/* POST to logIn. */
 router.post('/', function(req, res, next) {
     var email = req.body.email;
     var password = req.body.password;
