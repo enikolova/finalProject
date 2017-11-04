@@ -1,4 +1,4 @@
-<div ng-controller="bookController">
+<!--<div ng-controller="bookController">
     <section class='sectionOfOneBook'>
          <div class='bookTitles'>
                 <h1 class='title'>
@@ -17,7 +17,7 @@
 
            </div>
 
-        <section class='descriptionOfBook column'>
+        <section class='descriptionOfBook column is-10'>
             <p>
                 <strong>Published by </strong>  {{book.volumeInfo.publisher}} on {{book.volumeInfo.publishedDate}}</p>
             <p>
@@ -25,8 +25,8 @@
                 <span ng-if='book.volumeInfo.description'>{{book.volumeInfo.description}}</span>
                 <span ng-if='!book.volumeInfo.description'>No description</span>
             </p>
-            <!--.length > 0 ? {{book.volumeInfo.description}}  :  No description provided -->
-            <p>
+            length > 0 ? {{book.volumeInfo.description}}  :  No description provided -->
+            <!--<p>
                 <strong>Price:</strong> {{book.saleInfo.listPrice.amount}} {{book.saleInfo.listPrice.currencyCode}}
                 <span ng-if='!book.saleInfo.listPrice.amount'>Out of stock</span>
             </p>
@@ -34,12 +34,53 @@
             <a href="" ng-if="book.saleInfo.listPrice.amount" class='buyBookBtn button is-primary subtitle'>Buy</a>
         </section>
 
-        <div>
+        <div class='hero'>
             <h2 class="subtitle">Product details</h2>
             <p>Pages:{{}}</p>
         </div>
 
     </section>
-</div>
+</div>-->
 
+<div class="tile is-ancestor">
+  <div class="tile is-4 is-vertical is-parent">
+    <div class="tile is-child box">
+     <img class='image level-left imgBook' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" width='150px' alt="">
+    </div>
+    <div class="tile is-child box">
+       <h2 class="subtitle">Product details</h2>
+            <p><strong>Pages:</strong> {{book.volumeInfo.pageCount}}</p>
+            <p><strong>Publisher: </strong>{{book.volumeInfo.publisher}}</p>
+            <p><strong>Language: </strong>{{book.volumeInfo.language}}</p>
+            <p><strong>ISBN-10: </strong>{{book.volumeInfo.industryIdentifiers[1].identifier}}</p>
+            <p><strong>ISBN-13: </strong> {{book.volumeInfo.industryIdentifiers[0].identifier}}</p>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <div class="tile is-child box">
+      
+                <h1 class='title'>
+                    {{book.volumeInfo.title}}
+                </h1>
+                <h3 class='subtitle'> {{book.volumeInfo.subtitle}}</h3>
+
+                <h6>by
+                    <span ng-repeat='author in book.volumeInfo.authors'> {{author}}{{$last ? '' : ', '}}</span>
+                </h6>
+                <p>
+                <strong>Published by </strong>  {{book.volumeInfo.publisher}} on {{book.volumeInfo.publishedDate}}</p>
+            <p>
+                <strong>Description:</strong>
+                <span ng-if='book.volumeInfo.description'>{{book.volumeInfo.description}}</span>
+                <span ng-if='!book.volumeInfo.description'>No description</span>
+            </p>
+            <p>
+                <strong>Price:</strong> {{book.saleInfo.listPrice.amount}} {{book.saleInfo.listPrice.currencyCode}}
+                <span ng-if='!book.saleInfo.listPrice.amount'>Out of stock</span>
+            </p>
+            <a href="" ng-if="!book.saleInfo.listPrice.amount" class="buyBookBtn button is-primary subtitle level-right" disabled> Buy</a>
+            <a href="" ng-if="book.saleInfo.listPrice.amount" class='buyBookBtn button is-primary subtitle level-right'>Buy</a>
+           
+    </div>
+  </div>
 </div>
