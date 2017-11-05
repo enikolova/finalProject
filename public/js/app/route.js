@@ -22,6 +22,10 @@ angular.module('appRoutes', ['ngRoute','authorController']).config(function($rou
         templateUrl: 'view/book.htm',
         controller: 'bookController'
     })
+    .when('/books/:book_name', {
+        templateUrl: 'view/book.htm',
+        controller: 'searchedBook'
+    })
     .when('/authors/:author_name',{
         templateUrl:'view/author.htm',
         controller:'authorController'

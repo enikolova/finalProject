@@ -77,3 +77,18 @@ nav {
 #favBookAcc {
   flex-wrap: wrap;
 }
+#find{
+  background-color: white;
+
+  color:black;
+  position: absolute;
+  width:13em;
+  z-index: 1000;
+  border: 0.5px lightgray solid;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.hero-body {
+  padding: 0.5rem 1.5rem;
+}

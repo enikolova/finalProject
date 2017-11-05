@@ -44,7 +44,7 @@
                     <div class="column is-3">
                       <img ng-if='book.volumeInfo.imageLinks.thumbnail' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="" width="130">
                       <img ng-if='!book.volumeInfo.imageLinks.thumbnail' ng-src="https://cdn.pixabay.com/photo/2013/07/12/15/20/author-149694_640.png" alt="" width="130">
-                      <a href="#!/book/{{book._id}}" class = 'button is-primary' style = 'display:block'> <strong>More info</strong> </a>
+                      <a href="#!/book/{{book._id}}" class = 'button is-info' style = 'display:block'> <strong>More info</strong> </a>
                     </div>
                     <div class="column">
                       <h3 class="subtitle">{{book.volumeInfo.title}} </h3>

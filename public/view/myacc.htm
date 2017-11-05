@@ -17,14 +17,14 @@
        
     </div>
     <div class="tile is-parent is-vertical">
-        <div class="tile is-child box">
+        <div class="tile is-child box is-12">
 
-            <h1 class='title'>
+            <h1 class='title is-12'>
                My favorite books:
             </h1>
-            <div class = 'columns' id = 'favBookAcc'>
+            <div class = 'columns is-onequarter' id = 'favBookAcc'>
                     
-            <div class = 'column is-one-quarter' ng-repeat = 'book in user.favouriteBooks | limitTo: 4 : startIndex'>
+            <div class = 'column is-onequarter' ng-repeat = 'book in user.favouriteBooks | limitTo: 4 : startIndex'>
                 <img width = '130' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="">
                 <p class = 'column'>{{book.volumeInfo.title}}</p>
             </div>

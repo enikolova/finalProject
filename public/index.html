@@ -27,6 +27,7 @@
       <!-- controllers -->
       <script src="js/app/controller/mainController.js"></script>
       <script src="js/app/controller/bookController.js"></script>
+   <script src="js/app/controller/searchedBook.js"></script>      
       <script src="js/app/controller/authorController.js"></script>
       <script src="js/app/controller/registerController.js"></script>
       <script src="js/app/controller/loginController.js"></script>
@@ -47,20 +48,26 @@
     
     </div>
     </div>
-  <div class="field has-addons">
-  <p class="control">
-    <a class="button is-static">
+    <div class="field has-addons">
+        <p class="control">
+          <a class="button is-static">
      Books
     </a>
-  </p>
-  <div class="control ">
-    <input class="input is-normal search" type="text">
-  </div>
-  <div class="control">
-    <a class="button is-orange">
-      Search
-    </a>
-  </div>
+        </p>
+        <div class="control ">
+          <input class="input is-normal search" type="text" ng-model="search.volumeInfo.title" placeholder="Title">
+            <a class="button is-orange"> Search</a>
+          <div id='find' class="column" ng-show="search.volumeInfo.title.length>0">
+            <p ng-show="(all | filter:search).length==0">No results</p>
+            <article ng-repeat="book in all | filter:search | limitTo:5">
+              <p><a href="#!/books/{{book.volumeInfo.title}}" ng-click="search.volumeInfo.title=''">{{book.volumeInfo.title}}</a></p>
+              <hr ng-hide="$index==4">
+              
+          </div>
+          </article>
+        </div>
+
+      </div>
       
 </nav>
 
@@ -81,56 +88,61 @@
       <div ng-view class = 'hero-body'>
         
       </div>
+       
 
-    </main>
-  
-<div id="footer">
-<div class="hero is-dark is-small">
-<a class="button is-dark">Back to top</a>
-</div>
-<footer class="hero footer is-dark">
-  <div class="hero is-dark">
-    <div class="content has-text-centered">
-      <div>
-        <div class="columns">
-  <div class="column">
-     <ul>
-     <li><a href="#">Get to Know Us</a></li>
-     <li><a href="#">Careers</a></li>
-     <li><a href="#">About Emazon</a></li>
-   </ul>
-  </div>
-  <div class="column">
-    <ul>
-     <li><a href="#">Make Money With Us</a></li>
-     <li><a href="#">Sell on Emazon</a></li>
-     <li><a href="#">Advertise your products</a></li>
-     <li><a href="#">Become an Emazon vendor</a></li>
-     <li><a href="#">Become an Affliate</a></li>
-   </ul>
-  </div>
+    </nav>
 
-  <div class="column">
-   <ul>
-     <li><a href="#">Let Us Help You</a></li>
-     <li><a href="#">Your account</a></li>
-     <li><a href="#">Your orders</a></li>
-     <li><a href="#">Returns and Replacements</a></li>
-     <li><a href="#">Help</a></li>
-   </ul>
-  </div>
-</div>
-      </div>
+    
+  </header>
+
+  <div id="footer">
+    <div class="hero is-dark is-small">
+      <a class="button is-dark">Back to top</a>
     </div>
-  </div>
-  
-</footer>
-<div class="hero is-dark is-small">
-<ul id='inFoot'>
-  <li>Condition Of Use</li>
-  <li>Privacy Notice</li>
-</ul>   
-</div>
+    <footer class="hero footer is-dark">
+      <div class="hero is-dark">
+        <div class="content has-text-centered">
+          <div>
+            <div class="columns">
+              <div class="column">
+                <ul>
+                  <li><a href="#">Get to Know Us</a></li>
+                  <li><a href="#">Careers</a></li>
+                  <li><a href="#">About Emazon</a></li>
+                </ul>
+              </div>
+              <div class="column">
+                <ul>
+                  <li><a href="#">Make Money With Us</a></li>
+                  <li><a href="#">Sell on Emazon</a></li>
+                  <li><a href="#">Advertise your products</a></li>
+                  <li><a href="#">Become an Emazon vendor</a></li>
+                  <li><a href="#">Become an Affliate</a></li>
+                </ul>
+              </div>
 
-  </body>
+              <div class="column">
+                <ul>
+                  <li><a href="#">Let Us Help You</a></li>
+                  <li><a href="#">Your account</a></li>
+                  <li><a href="#">Your orders</a></li>
+                  <li><a href="#">Returns and Replacements</a></li>
+                  <li><a href="#">Help</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </footer>
+    <div class="hero is-dark is-small">
+      <ul id='inFoot'>
+        <li>Condition Of Use</li>
+        <li>Privacy Notice</li>
+      </ul>
+    </div>
+
+</body>
+
 </html>

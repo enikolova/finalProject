@@ -53,6 +53,14 @@ router.post('/:book_id',function(req,res,next){
     })
 })
 
-
+router.get('/book/:book_name', function(req, res, next) {
+    var db = req.db;
+    var collection = db.get('books');
+    
+    var name = req.params.book_name;
+    collection.find({'volumeInfo.title': name}, {}, function(e, docs) {
+        res.json(docs[0]);
+    });
+});
 
 module.exports = router;
