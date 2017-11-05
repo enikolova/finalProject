@@ -1,4 +1,4 @@
-function Comments(title,rating,username,text,bookId){
+var Comments=function(title,rating,username,text,bookId){
     this.title=title.trim();
     this.rating=rating;
     this.username=username;

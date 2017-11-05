@@ -64,3 +64,14 @@ li:first-of-type{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+#find{
+  background-color: white;
+
+  color:black;
+  position: absolute;
+  width:13em;
+  z-index: 1000;
+  border: 0.5px lightgray solid;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
