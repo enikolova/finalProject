@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-
+//GET -- all authors
 router.get('/', function(req, res, next) {
     var db = req.db;
     var collection = db.get('authors');
@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
         res.json(docs);
     });
 });
-
+//GET - single author
 router.get('/:author_name', function(req, res, next) {
     var db = req.db;
     var collection = db.get('authors');
