@@ -7,6 +7,14 @@
      font-size: 1.25em;
       color:#eaddc5;
 }
+.fa-chevron-left, .fa-chevron-right{
+    font-size: 2em;
+    color: #1e6cc7;
+    width: 50%;
+    display: inline-block;
+}
+
+
 .column a{
     font-size: 0.85em;
     color:grey;

@@ -7,10 +7,12 @@ angular.module('bookController', [])
             }
             return false;
         }
+        $scope.book = null;
         $scope.getBook = function () {
             $http.get('http://localhost:4000/books/' + id).then(function (book) {
                 $scope.book = book.data;
                 $scope.bookRating = book.data.volumeInfo.averageRating
+                
                 //  $scope.newComment={};
             })
         }
@@ -40,6 +42,12 @@ angular.module('bookController', [])
             })
         }
         $scope.addToFavourite = function() {
-            
+            var userId = sessionStorage.getItem('user')
+            console.log(userId)
+            // $scope.book =  {book: $scope.getBook()};
+            console.log($scope.book)
+            $http.post('http://localhost:4000/login/fav/' + userId, {book:$scope.book}).then(function(data) {
+                console.log(data)
+            })
         }
     });

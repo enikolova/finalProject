@@ -39,15 +39,15 @@
             </div>
           <br>
             <ul>
-                <li ng-repeat="book in booksByAuthor | orderBy: sortBooks">
-                  <div class="columns" >
+                <li ng-repeat="book in booksByAuthor | orderBy: sortBooks  | limitTo : 5 : startIndex">
+                  <div class="columns"  >
                     <div class="column is-3">
                       <img ng-if='book.volumeInfo.imageLinks.thumbnail' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="" width="130">
                       <img ng-if='!book.volumeInfo.imageLinks.thumbnail' ng-src="https://cdn.pixabay.com/photo/2013/07/12/15/20/author-149694_640.png" alt="" width="130">
                       <a href="#!/book/{{book._id}}" class = 'button is-primary' style = 'display:block'> <strong>More info</strong> </a>
                     </div>
                     <div class="column">
-                      <h3 class="subtitle">{{book.volumeInfo.title}}</h3>
+                      <h3 class="subtitle">{{book.volumeInfo.title}} </h3>
                       <h6>by {{book.volumeInfo.authors[0]}}</h6>
                        <hr>
                        <p>
@@ -61,7 +61,19 @@
               <hr>
                     </div>
                   </div>
+                  
                 </li>
+                <div class="pagination is-centered is-medium" role="navigation" aria-label="pagination">
+                    <a class="pagination-previous" ng-show = 'currentPage == 1'>Previous</a>
+                    <a class="pagination-previous" ng-click = 'prevPage()' ng-show = 'currentPage > 1'>Previous</a>
+                    <a class="pagination-next" ng-click = 'nextPage()' ng-hide = '(startIndex > (booksByAuthor.length - 5))'>Next page</a>
+                    <ul class="pagination-list">
+                      <li><a class="pagination-link"  ng-click = 'prevPage()' ng-show = 'currentPage > 1'>{{currentPage - 1}}</a></li>
+                      <li><a class="pagination-link is-current"  aria-current="page">{{currentPage}}</a></li>
+                      <li><a class="pagination-link" ng-click = 'nextPage()' ng-hide = '(startIndex > (booksByAuthor.length - 5))'>{{currentPage + 1}}</a></li>
+                   
+                    </ul>
+                  </div>
             </ul>
         </div>
       </div>

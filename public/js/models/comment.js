@@ -1,4 +1,4 @@
-function Comment(title,rating,username,text,bookId){
+function Comments(title,rating,username,text,bookId){
     this.title=title.trim();
     this.rating=rating;
     this.username=username;
@@ -7,4 +7,4 @@ function Comment(title,rating,username,text,bookId){
     var date=new Date();
     this.date=date.toDateString();
 }
-module.exports = Comments;
+module.exports=Comments;

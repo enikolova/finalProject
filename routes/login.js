@@ -18,6 +18,24 @@ router.get('/:user_id', function(req, res, next) {
 });
 
 
+// POST to user favourite books
+router.post('/fav/:user_id', function(req,res,next) {
+    console.log('vliza')
+    var db = req.db;
+    var collection = db.get('users');
+    var id = req.params.user_id;
+    var book = req.body.book;
+    console.log(book)
+    collection.find({ _id: id }, {}, function(e, docs) {
+        docs[0].favouriteBooks.push(book);
+        collection.update({_id:id}, docs[0], function() {
+            
+        })
+        res.json(docs[0]);
+    });
+})
+
+
 /* POST to logIn. */
 router.post('/', function(req, res, next) {
     var email = req.body.email;

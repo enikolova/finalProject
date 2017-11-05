@@ -17,4 +17,19 @@ angular.module('authorController', [])
             })
         })
         $scope.sortBooks = 'saleInfo.listPrice.amount';
+
+        $scope.currentPage = 1;
+        $scope.startIndex = 0;
+       
+        $scope.nextPage = function() {
+            $scope.currentPage += 1;
+           $scope.startIndex += 5
+          
+            
+        }
+        $scope.prevPage = function() {
+            $scope.currentPage -= 1;
+            $scope.startIndex -= 5;
+        }
+
     })

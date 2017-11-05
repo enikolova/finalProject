@@ -78,7 +78,7 @@
         </div>
         
                 <ul>
-                    <li ng-repeat="book in getBooks(rating)| orderBy: sortBooks |filter: filterAuthors ">
+                    <li ng-repeat="book in getBooks(rating)| orderBy: sortBooks |filter: filterAuthors | limitTo : 5 : startIndex">
                         <div class="columns">
                             <div class="column is-3">
                                 <img class = 'imgByCategory' ng-if='book.volumeInfo.imageLinks.thumbnail' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="" >
@@ -103,7 +103,20 @@
                             </div>
                         </div>
                     </li>
+                   
                 </ul>
+                <div class="pagination is-centered is-medium" role="navigation" aria-label="pagination">
+                        <a class="pagination-previous" ng-show = 'currentPage == 1'>Previous Page</a>
+                        <a class="pagination-previous" ng-click = 'prevPage()' ng-show = 'currentPage > 1'>Previous Page</a>
+                        <a class="pagination-next" ng-click = 'nextPage()' ng-hide='(startIndex > ((getBooks(rating) | filter: filterAuthors).length)-5)'>Next page</a>
+                        
+                        <ul class="pagination-list">
+                          <li><a class="pagination-link"  ng-click = 'prevPage()' ng-show = 'currentPage > 1'>{{currentPage - 1}}</a></li>
+                          <li><a class="pagination-link is-current"  aria-current="page">{{currentPage}}</a></li>
+                          <li><a class="pagination-link" ng-click = 'nextPage()' ng-hide='(startIndex > ((getBooks(rating) | filter: filterAuthors).length)-5)'>{{currentPage + 1}}</a></li>
+                       
+                        </ul>
+                </div>
             </div>
         </div>
     </div>

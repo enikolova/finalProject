@@ -22,11 +22,19 @@
             <h1 class='title'>
                My favorite books:
             </h1>
-            <div class = 'columns' ng-repeat: 'book in user.favouriteBooks'>
-                <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="">
+            <div class = 'columns' id = 'favBookAcc'>
+                    
+            <div class = 'column is-one-quarter' ng-repeat = 'book in user.favouriteBooks | limitTo: 4 : startIndex'>
+                <img width = '130' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="">
                 <p class = 'column'>{{book.volumeInfo.title}}</p>
-                
+            </div>
+           
             </div>  
+            <div class = 'level'>
+                    <a> <i class="fa fa-chevron-left level-left" aria-hidden="true" ng-click = 'prevPage()'></i></a> 
+                    <a><i class="fa fa-chevron-right level-right" aria-hidden="true" ng-click = 'nextPage()'></i></a>
+            </div>
+
         </div>
 
         <div class="tile is-child box">
