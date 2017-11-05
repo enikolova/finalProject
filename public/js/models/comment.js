@@ -7,3 +7,4 @@ function Comment(title,rating,username,text,bookId){
     var date=new Date();
     this.date=date.toDateString();
 }
+module.exports = Comments;

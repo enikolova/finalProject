@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+
 //GET --- get all comments
 router.get('/:book_id', function(req, res, next) {
    var db = req.db;

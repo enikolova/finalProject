@@ -9,6 +9,10 @@
      <p><strong>Language: </strong>{{book.volumeInfo.language}}</p>
      <p><strong>ISBN-10: </strong>{{book.volumeInfo.industryIdentifiers[1].identifier}}</p>
      <p><strong>ISBN-13: </strong> {{book.volumeInfo.industryIdentifiers[0].identifier}}</p>
+     <p> <label for="progressRating"><strong>Average rating:</strong>  {{bookRating}}/5 </label>
+      <progress name='progressRating' class="progress is-warning" value="{{bookRating}}" max="5">
+      </progress></p>
+     
     </div>
     <!-- <div class="tile is-child box">
        <h2 class="subtitle">Product details</h2>
@@ -44,7 +48,7 @@
             <br>
             <a href="" ng-if="!book.saleInfo.listPrice.amount" class="buyBookBtn button is-info subtitle " disabled> Add to cart</a>
             <a href="" ng-if="book.saleInfo.listPrice.amount" class='buyBookBtn button is-info  subtitle '>Add to cart</a>
-            <a href="" class='buyBookBtn button is-info  subtitle ' ng-if = 'userLogged()'>Add to favourites</a> 
+            <a href="" class='buyBookBtn button is-info  subtitle ' ng-if = 'userLogged()' ng-click = 'addToFavourite()'>Add to favourites</a> 
             <a href="" class='buyBookBtn button is-info  subtitle ' ng-if = '!userLogged()' disabled>Add to favourites</a> 
           </div>
 
