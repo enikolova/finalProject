@@ -17,7 +17,13 @@ $http.get('http://localhost:4000/comments/'+id).then(function(comment){
     $scope.addComment=function(){
         $http.put('http://localhost:4000/comments/'+id ,$scope.newComment).then(function(){
              $scope.getComments();
-            $scope.newComment=null;
+             $scope.rating={rating:$scope.newComment.rating};
+             console.log( $scope.rating);
+             $http.post('http://localhost:4000/books/'+id , $scope.rating).then(function(){
+ $scope.newComment=null;
+             })
+
+           
             
         })
     }
