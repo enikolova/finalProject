@@ -58,6 +58,8 @@ margin: 2em auto;
     /*float: right;
     margin-right: 12px;*/
     padding: 10px 40px;
+    padding: 10px 75px 10px 80px;
+    width: 20%;
 }
 .imgBook {
     border-radius: 10px;
@@ -77,4 +79,8 @@ margin: 2em auto;
 
 .gridOfBooks:hover {
     filter: brightness(80%)
+}
+
+.imgByCategory {
+    width: 150px;
 }

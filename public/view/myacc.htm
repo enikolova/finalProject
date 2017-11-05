@@ -1,4 +1,58 @@
-<section >
-    <h1>Hello, {{user.username}}</h1>
-    <p>your favourite books are: </p>
-</section>
+<div class="tile is-ancestor">
+    <div class="tile is-3 is-vertical is-parent">
+        <div class="tile is-child box">
+            <img class='image level-left imgBook' ng-src="../img/profile.png" width='150px' alt="">
+            <br>
+            <h2 class="subtitle">My profile</h2>
+            <p>
+                <strong>Username:</strong> {{user.username}}</p>
+            <p>
+                <strong>E-mail: </strong>{{user.email}}</p>
+            <p>
+                <strong>Favourite books: </strong>{{user.favouriteBooks.length}}</p>
+            <p>
+                <strong>Comments: </strong>{{user.comments.length}}</p>
+            
+        </div>
+       
+    </div>
+    <div class="tile is-parent is-vertical">
+        <div class="tile is-child box">
+
+            <h1 class='title'>
+               My favorite books:
+            </h1>
+            <div class = 'columns' ng-repeat: 'book in user.favouriteBooks'>
+                <img ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="">
+                <p class = 'column'>{{book.volumeInfo.title}}</p>
+                
+            </div>  
+        </div>
+
+        <div class="tile is-child box">
+            <h2 class="subtitle has-text-weight-semibold">My comments:</h2>
+            <article class="media" ng-repeat="comment in comments">
+                <div class="media-content">
+                    <div class="content">
+                        <p>
+                            <strong class="subtitle">{{comment.title}}</strong>
+                            <br> By {{comment.username}}
+                            <br>
+                            <small>on {{comment.date}}</small>
+                            <p>
+                                <label for="progressRating">
+                                    <strong>Average rating:</strong> {{comment.rating}}/5 </label>
+                                <progress name='progressRating' class="progress is-warning" value="{{comment.rating}}" max="5">
+                                </progress>
+                            </p>
+                            {{comment.text}}
+                        </p>
+                    </div>
+                </div>
+                <div class="media-right">
+                    <button class="delete"></button>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

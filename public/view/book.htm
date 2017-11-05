@@ -3,17 +3,23 @@
   <div class="tile is-3 is-vertical is-parent">
     <div class="tile is-child box">
      <img class='image level-left imgBook' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" width='150px' alt="">
+     <h2 class="subtitle">Product details</h2>
+     <p><strong>Pages:</strong> {{book.volumeInfo.pageCount}}</p>
+     <p><strong>Publisher: </strong>{{book.volumeInfo.publisher}}</p>
+     <p><strong>Language: </strong>{{book.volumeInfo.language}}</p>
+     <p><strong>ISBN-10: </strong>{{book.volumeInfo.industryIdentifiers[1].identifier}}</p>
+     <p><strong>ISBN-13: </strong> {{book.volumeInfo.industryIdentifiers[0].identifier}}</p>
     </div>
-    <div class="tile is-child box">
+    <!-- <div class="tile is-child box">
        <h2 class="subtitle">Product details</h2>
             <p><strong>Pages:</strong> {{book.volumeInfo.pageCount}}</p>
             <p><strong>Publisher: </strong>{{book.volumeInfo.publisher}}</p>
             <p><strong>Language: </strong>{{book.volumeInfo.language}}</p>
             <p><strong>ISBN-10: </strong>{{book.volumeInfo.industryIdentifiers[1].identifier}}</p>
             <p><strong>ISBN-13: </strong> {{book.volumeInfo.industryIdentifiers[0].identifier}}</p>
-    </div>
+    </div> -->
   </div>
-  <div class="tile is-parent">
+  <div class="tile is-parent is-vertical">
     <div class="tile is-child box">
       
                 <h1 class='title'>
@@ -35,9 +41,12 @@
                 <strong>Price:</strong> {{book.saleInfo.listPrice.amount}} {{book.saleInfo.listPrice.currencyCode}}
                 <span ng-if='!book.saleInfo.listPrice.amount'>Out of stock</span>
             </p>
-            <a href="" ng-if="!book.saleInfo.listPrice.amount" class="buyBookBtn button is-primary subtitle level-right" disabled> Buy</a>
-            <a href="" ng-if="book.saleInfo.listPrice.amount" class='buyBookBtn button is-primary  subtitle level-right'>Buy</a>
-             </div>
+            <br>
+            <a href="" ng-if="!book.saleInfo.listPrice.amount" class="buyBookBtn button is-info subtitle " disabled> Add to cart</a>
+            <a href="" ng-if="book.saleInfo.listPrice.amount" class='buyBookBtn button is-info  subtitle '>Add to cart</a>
+            <a href="" class='buyBookBtn button is-info  subtitle ' ng-if = 'userLogged()'>Add to favourites</a> 
+            <a href="" class='buyBookBtn button is-info  subtitle ' ng-if = '!userLogged()' disabled>Add to favourites</a> 
+          </div>
 
     <div class="tile is-child box">
             <h2 class="subtitle has-text-weight-semibold">Customer reviews:</h2>
@@ -78,13 +87,13 @@
         <textarea class="textarea" name="text" ng-model="newComment.text" placeholder="Add a comment..."></textarea>
       </p>
     </div>
-    <nav class="level">
+    <div class="level">
       <div class="level-left">
         <div class="level-item">
-          <a class="button is-primary" ng-click="addComment()">Submit</a>
+          <a class="buyBookBtn button is-info" ng-click="addComment()">Post</a>
         </div>
       </div>
-    </nav>
+    </div>
   </div>
 </article>
     </div>

@@ -1,5 +1,5 @@
 .navbar img{
-  max-height: 2.25em;
+  max-height: 3em;
 }
 .is-orange{
   background-color: #ffbc6b;
@@ -22,10 +22,11 @@ li:first-of-type{
 }
 #footer{
   width: 100%;
-  margin-top: 1em;
-
+  margin-top: 1em; 
+  bottom: 0;
   
 }
+
 
 #inFoot{
   margin: auto;
@@ -63,4 +64,13 @@ li:first-of-type{
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+nav {
+  background: linear-gradient(to right, #5B86E5, #36D1DC);
+}
+.navbar-link.is-active, .navbar-link:hover, a.navbar-item.is-active, a.navbar-item:hover {
+  background-color: #5B86E5;
+  color: #0a0a0a;
+  filter: brightness(110%);
 }

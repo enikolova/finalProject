@@ -2,8 +2,8 @@
   
   .bookshelf_wrapper {
     position: relative;
-    margin-top: 150px;
-    left: 30%;
+    margin-top: 250px;
+    left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
   }

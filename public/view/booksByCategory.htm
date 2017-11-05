@@ -81,13 +81,13 @@
                     <li ng-repeat="book in getBooks(rating)| orderBy: sortBooks |filter: filterAuthors ">
                         <div class="columns">
                             <div class="column is-3">
-                                <img ng-if='book.volumeInfo.imageLinks.thumbnail' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="" width="130">
+                                <img class = 'imgByCategory' ng-if='book.volumeInfo.imageLinks.thumbnail' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="" >
                                 <img ng-if='!book.volumeInfo.imageLinks.thumbnail' ng-src="https://cdn.pixabay.com/photo/2013/07/12/15/20/author-149694_640.png"
                                     alt="" width="130">
-                                    <a href="#!/book/{{book._id}}" class='button is-primary' style='display:block'> <strong>More info</strong> </a>
+                                    <a href="#!/book/{{book._id}}" class='button is-info' style='display:block'> <strong>More info</strong> </a>
                             </div>
                             
-                            <div class="column">
+                            <div class="column is-6">
                                 <h3 class="subtitle">{{book.volumeInfo.title}}</h3>
                                 <h6>by {{book.volumeInfo.authors[0]}}</h6>
                                 <hr>
