@@ -39,6 +39,11 @@ angular.module('bookController', [])
 
             })
         }
+        $scope.deleteComment=function(id){
+            $http.delete('http://localhost:4000/comments/'+ id).then(function(){
+                 $scope.getComments();
+            })
+        }
         $scope.addToFavourite = function () {
             var userId = sessionStorage.getItem('user')
 

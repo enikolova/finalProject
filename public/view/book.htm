@@ -75,8 +75,8 @@
       </p>
     </div>
   </div>
-  <div class="media-right">
-    <button class="delete"></button>
+  <div class="media-right" ng-controller="mainController">
+    <button class="delete" ng-show="isAdmin()" ng-click="deleteComment(comment._id)"></button>
   </div>
 </article>
            <article class="media">
