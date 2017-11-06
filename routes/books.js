@@ -1,13 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-router.delete('/book/remove/:book_name',function(req,res,next){
+router.delete('/book/remove/:book_id',function(req,res,next){
 
     var db=req.db;
     var collection=db.get('books');
-     var name = req.params.book_name;
-     console.log(name);
-     collection.remove({'volumeInfo.title':name},function(e,docs){
+     var id = req.params.book_id;
+     collection.remove({_id:id},function(e,docs){
          res.send('success');
      })
 })

@@ -1,84 +1,104 @@
 <section class="hero is-orange welcome is-small">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                    Hello, Admin.
-                </h1>
-                <h2 class="subtitle">
-                    I hope you are having a great day!
-                </h2>
-            </div>
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Hello, Admin.
+            </h1>
+            <h2 class="subtitle">
+                I hope you are having a great day!
+            </h2>
         </div>
-    </section>
-    <section class="info-tiles">
-        <div class="tile is-ancestor has-text-centered">
-            <div class="tile is-parent">
-                <article class="tile is-child box">
-                    <p class="title">439k</p>
-                    <p class="subtitle">Users</p>
-                </article>
-            </div>
-            <div class="tile is-parent">
-                <article class="tile is-child box">
-                    <p class="title">59k</p>
-                    <p class="subtitle">Products</p>
-                </article>
-            </div>
+    </div>
+</section>
+<section class="info-tiles">
+    <div class="tile is-ancestor has-text-centered">
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title">{{usersLength}}</p>
+                <p class="subtitle">Users</p>
+            </article>
         </div>
-    </section>
-    <div class="columns">
-        <div class="column is-6">
-            <div class="card">
-                <header class="card-header">
-                    <p class="card-header-title">
-                        Inventory Search
-                    </p>
-                    <a href="#" class="card-header-icon" aria-label="more options">
-                        <span class="icon">
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title">{{booksLength}}</p>
+                <p class="subtitle">Books</p>
+            </article>
+        </div>
+    </div>
+</section>
+<div class="columns">
+    <div class="column is-6">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    Books Search
+                </p>
+                <a href="#" class="card-header-icon" aria-label="more options">
+                    <span class="icon">
                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                   </span>
-                    </a>
-                </header>
-                <div class="card-content">
-                    <div class="content">
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input is-large" type="text" placeholder="">
-                            <span class="icon is-medium is-left">
+                </a>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input is-large" type="text" ng-model="search.volumeInfo.title" placeholder="">
+                        <span class="icon is-medium is-left">
                       <i class="fa fa-search"></i>
                     </span>
-                            <span class="icon is-medium is-right">
+                        <span class="icon is-medium is-right">
                       <i class="fa fa-check"></i>
                     </span>
-                        </div>
                     </div>
+               
+                <div id='findA' class="column is-11" ng-show="search.volumeInfo.title.length>0">
+                    <p ng-show="(all | filter:search).length==0">No results</p>
+                    <article ng-repeat="book in all| filter:search | limitTo:5">
+                        <p><a href="#!/books/{{book.volumeInfo.title}}" ng-click="search.volumeInfo.title=''">{{book.volumeInfo.title}}</a>
+  <span class="level-right"><button class="delete" ng-click="deleteBook(book._id)"></button></span></p> 
+                        <hr ng-hide="$index==4">
+
+                    </article>
                 </div>
+                 </div>
             </div>
         </div>
-        <div class="column is-6">
-            <div class="card">
-                <header class="card-header">
-                    <p class="card-header-title">
-                        User Search
-                    </p>
-                    <a href="#" class="card-header-icon" aria-label="more options">
-                        <span class="icon">
+
+    </div>
+    <div class="column is-6">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    User Search
+                </p>
+                <a href="#" class="card-header-icon" aria-label="more options">
+                    <span class="icon">
                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                   </span>
-                    </a>
-                </header>
-                <div class="card-content">
-                    <div class="content">
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input is-large" type="text" placeholder="">
-                            <span class="icon is-medium is-left">
+                </a>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input is-large" type="text" ng-model="users.username" placeholder="">
+                        <span class="icon is-medium is-left">
                       <i class="fa fa-search"></i>
                     </span>
-                            <span class="icon is-medium is-right">
+                        <span class="icon is-medium is-right">
                       <i class="fa fa-check"></i>
                     </span>
-                        </div>
                     </div>
+                    <div id='findA' class="column is-11" ng-show="users.username.length>0">
+                    <p ng-show="(allUsers | filter:users).length==0">No results</p>
+                    <article ng-repeat="user in allUsers| filter:users | limitTo:5">
+                        <p><a >{{user.username}}</a>
+  <span class="level-right"><button class="delete" ng-click="deleteBook(book._id)"></button></span></p> 
+                        <hr ng-hide="$index==4">
+
+                    </article>
+                </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
