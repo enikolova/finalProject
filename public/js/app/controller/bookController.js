@@ -20,7 +20,6 @@ angular.module('bookController', [])
         $scope.getComments = function () {
             $http.get('http://localhost:4000/comments/' + id).then(function (comment) {
                 $scope.comments = comment.data;
-                console.log('hnfgbdfsdasaa');
                 $scope.getBook()
             })
         }
@@ -39,6 +38,11 @@ angular.module('bookController', [])
 
 
 
+            })
+        }
+        $scope.deleteComment=function(id){
+            $http.delete('http://localhost:4000/comments/'+ id).then(function(){
+                 $scope.getComments();
             })
         }
         $scope.addToFavourite = function () {
@@ -61,4 +65,5 @@ angular.module('bookController', [])
                 }
             })
         }
+
     });

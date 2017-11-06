@@ -1,6 +1,4 @@
-
 angular.module('loginController', [])
-
 .controller('loginController', function($http, $location, $scope, $timeout) {
     
     $scope.doLogin = function(loginData) {
@@ -11,6 +9,7 @@ angular.module('loginController', [])
             console.log(data)
            if(data.data.success) {
                 $scope.successMsg = data.data.message
+
                 //redirect to home
                 $timeout(function() {
                     $location.path('#!/')

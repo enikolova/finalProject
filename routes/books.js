@@ -1,6 +1,24 @@
 var express = require('express');
 var router = express.Router();
 
+router.delete('/book/remove/:book_name',function(req,res,next){
+
+    var db=req.db;
+    var collection=db.get('books');
+     var name = req.params.book_name;
+     console.log(name);
+     collection.remove({'volumeInfo.title':name},function(e,docs){
+         res.send('success');
+     })
+})
+router.put('/',function(req,res,next){
+     var db = req.db;
+    var collection = db.get('books');
+    var book=req.body.newBook;
+    collection.insert(book,function(e,docs){
+        res.send('success');
+    })
+})
 /* GET home page books. */
 router.get('/', function(req, res, next) {
     var db = req.db;
@@ -44,7 +62,7 @@ router.post('/:book_id',function(req,res,next){
          console.log(avgRating);
         var newRating=(avgRating+rating)/2;
         var newRatingCount=docs[0].volumeInfo.ratingsCount+1;
-        docs[0].volumeInfo.averageRating=newRating;
+        docs[0].volumeInfo.averageRating=newRating.toFixed(1);
         docs[0].volumeInfo.ratingsCount=newRatingCount;
          console.log(newRatingCount);
         collection.update({_id:id},docs[0],function(e,docs){
@@ -62,5 +80,6 @@ router.get('/book/:book_name', function(req, res, next) {
         res.json(docs[0]);
     });
 });
+
 
 module.exports = router;

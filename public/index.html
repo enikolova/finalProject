@@ -79,7 +79,8 @@
     <li class="is-active"><a href='#!/'>Books</a></li>
     <li><a href='#!/advanced'>Advanced search</a></li>
     <li><a ng-show = '!checkLogIn()' class = 'modal-button' href="#!/login" >Log in</a></li>
-    <li><a ng-show =  'checkLogIn()' class = 'modal-button' href="#!/myacc" >My Acc</a></li>
+    <li><a ng-show =  'checkLogIn()' class = 'modal-button' href="#!/myacc"  ng-if="!isAdmin()" >My Acc</a></li>
+    <li><a ng-show =  'checkLogIn()' class = 'modal-button' href="#!/admin" ng-if="isAdmin()" >My Acc</a></li>
     
   </ul>
 </div>

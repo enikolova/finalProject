@@ -27,4 +27,13 @@ router.put('/:book_id',function(req,res,next){
         res.json('success')
     })
 })
+//DELETE ---delete a comment
+router.delete('/:comment_id',function(req,res,next){
+     var db=req.db;
+    var collection=db.get('comments');
+    var comment=req.params.comment_id;
+    collection.remove({_id:comment},function(e,data){
+        res.json('success');
+    })
+})
 module.exports = router;
