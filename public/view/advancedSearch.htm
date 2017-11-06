@@ -19,13 +19,13 @@
 <div class="field">
   <label class="label">ISBN-10</label>
   <div class="control">
-    <input class="input" type="text" placeholder="ISBN-10" name = 'isbn-10' ng-model = 'searchData.isbn10'>
+    <input class="input" type="text" placeholder="ISBN-10" name = 'isbn10' ng-model = 'searchData.isbn10'>
   </div>
 </div>
 <div class="field">
   <label class="label">ISBN-13</label>
   <div class="control">
-    <input class="input" type="text" placeholder="ISBN-13" name = 'isbn-13' ng-model = 'searchData.isbn13'>
+    <input class="input" type="text" placeholder="ISBN-13" name = 'isbn13' ng-model = 'searchData.isbn13'>
   </div>
 </div>
 <div class="field">
@@ -40,5 +40,5 @@
     <input class="input" type="text" placeholder="Price" name = 'price' ng-model = 'searchData.price'>
   </div>
 </div>
-<a class="button is-info" ng-click = 'searchingForBooks(searchData)'>Search</a>
-   </div>
+<a class="button is-info" href="#!/advancedResult" ng-click = 'searchingForBooks(searchData)'>Search</a>
+</div>

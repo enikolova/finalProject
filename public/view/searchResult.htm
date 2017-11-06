@@ -1,0 +1,68 @@
+<div class="column" ng-controller = 'advancedSearchController'>
+    <h3 class="subtitle">Books By {{author.name}}</h3>
+
+    <div class="level-right">
+      <span>Sort by &nbsp</span>
+      <div class="select">
+        <select name="" id="" ng-model="sortBooks">
+      <option disabled selected>Sort By</option>
+      <option value="+saleInfo.listPrice.amount" >Price:Low to High</option>
+      <option value="-saleInfo.listPrice.amount">Price:High to Low</option>
+      <option value="+volumeInfo.averageRating">Avg. Customer Review: Low to High</option>
+      <option value="-volumeInfo.averageRating">Avg. Customer Review: High to Low</option>
+    </select>
+      </div>
+    </div>
+    <div>
+        
+        <div class="bookshelf_wrapper" ng-show= 'loading'>
+          <ul class="books_list">
+            <li class="book_item first"></li>
+            <li class="book_item second"></li>
+            <li class="book_item third"></li>
+            <li class="book_item fourth"></li>
+            <li class="book_item fifth"></li>
+            <li class="book_item sixth"></li>
+          </ul>
+          <div class="shelf"></div>
+        </div>
+      <br>
+        <ul>
+            <li ng-repeat="book in allB">
+              <div class="columns"  >
+                <div class="column is-3">
+                  <img ng-if='book.volumeInfo.imageLinks.thumbnail' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="" width="130">
+                  <img ng-if='!book.volumeInfo.imageLinks.thumbnail' ng-src="https://cdn.pixabay.com/photo/2013/07/12/15/20/author-149694_640.png" alt="" width="130">
+                  <a href="#!/book/{{book._id}}" class = 'button is-info' style = 'display:block'> <strong>More info</strong> </a>
+                </div>
+                <div class="column">
+                  <h3 class="subtitle">{{book.volumeInfo.title}} </h3>
+                  <h6>by <span ng-repeat ='author in book.volumeInfo.authors'>{{author}} {{$last ? '' : ', '}}</span> </h6>
+                   <hr>
+                   <p>
+                    <strong>Price:</strong> {{book.saleInfo.listPrice.amount}} {{book.saleInfo.listPrice.currencyCode}}
+                    <span ng-if='!book.saleInfo.listPrice.amount'>Out of stock</span>
+                </p>
+                 <hr>
+                 <label for="progressRating"><span ng-if = 'book.volumeInfo.averageRating'>Average rating:  {{book.volumeInfo.averageRating}}/5</span> <span  ng-if = '!book.volumeInfo.averageRating'> No rating availiable</span></label>
+                 <progress name = 'progressRating' class="progress is-warning" value="{{book.volumeInfo.averageRating}}" max="5" ng-if = 'book.volumeInfo.averageRating'> </progress>
+                <!--<p>{{book.volumeInfo.averageRating}}/{{book.volumeInfo.ratingsCount}}</p>-->
+          <hr>
+                </div>
+              </div>
+              
+            </li>
+            <div class="pagination is-centered is-medium" role="navigation" aria-label="pagination">
+                <a class="pagination-previous" ng-show = 'currentPage == 1'>Previous</a>
+                <a class="pagination-previous" ng-click = 'prevPage()' ng-show = 'currentPage > 1'>Previous</a>
+                <a class="pagination-next" ng-click = 'nextPage()' ng-hide = '(startIndex > (booksByAuthor.length - 5))'>Next page</a>
+                <ul class="pagination-list">
+                  <li><a class="pagination-link"  ng-click = 'prevPage()' ng-show = 'currentPage > 1'>{{currentPage - 1}}</a></li>
+                  <li><a class="pagination-link is-current"  aria-current="page">{{currentPage}}</a></li>
+                  <li><a class="pagination-link" ng-click = 'nextPage()' ng-hide = '(startIndex > (booksByAuthor.length - 5))'>{{currentPage + 1}}</a></li>
+               
+                </ul>
+              </div>
+        </ul>
+    </div>
+  </div>

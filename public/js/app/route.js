@@ -9,6 +9,11 @@ angular.module('appRoutes', ['ngRoute','authorController']).config(function($rou
         controller: 'advancedSearchController'
         
     })
+    .when('/advancedResult', {
+        templateUrl: 'view/searchResult.htm',
+        controller: 'advancedSearchController'
+        
+    })
     .when('/login', {
         templateUrl: 'view/login.htm',
         controller: 'loginController'
