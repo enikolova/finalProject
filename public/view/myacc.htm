@@ -23,15 +23,18 @@
                My favorite books:
             </h1>
             <div class = 'columns' id = 'favBookAcc'>
-                    
+                
             <div class = 'column is-one-quarter' ng-repeat = 'book in user.favouriteBooks | limitTo: 4 : startIndex'>
+                <a href="#!/book/{{book._id}}"> 
                 <img width = '130' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="">
                 <p class = 'column'>{{book.volumeInfo.title}}</p>
+            </a>
             </div>
+           
            
             </div>  
             <div class = 'level'>
-                    <a> <i class="fa fa-chevron-left level-left" aria-hidden="true" ng-click = 'prevPage()' ng-hide = '((user.favouriteBooks.length - 4) > startIndex )'></i></a> 
+                    <a> <i class="fa fa-chevron-left level-left" aria-hidden="true" ng-click = 'prevPage()' ng-show = '(startIndex > 0)'></i></a> 
                     <a><i class="fa fa-chevron-right level-right" aria-hidden="true" ng-click = 'nextPage() ' ng-hide = '(startIndex > (user.favouriteBooks.length - 4))'></i></a>
             </div>
 
@@ -39,11 +42,12 @@
 
         <div class="tile is-child box">
             <h2 class="subtitle has-text-weight-semibold">My comments:</h2>
-            <article class="media" ng-repeat="comment in comments">
+
+            <article class="media" ng-repeat="comment in user.comments">
                 <div class="media-content">
                     <div class="content">
                         <p>
-                            <strong class="subtitle">{{comment.title}}</strong>
+                            <strong class="subtitle">{{comment.title}} on <strong>{{comment.bookTitle}}</strong> </strong>
                             <br> By {{comment.username}}
                             <br>
                             <small>on {{comment.date}}</small>
@@ -53,7 +57,7 @@
                                 <progress name='progressRating' class="progress is-warning" value="{{comment.rating}}" max="5">
                                 </progress>
                             </p>
-                            {{comment.text}}
+                            <strong>Comment : </strong> {{comment.text}}
                         </p>
                     </div>
                 </div>

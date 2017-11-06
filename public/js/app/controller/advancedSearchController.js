@@ -16,7 +16,7 @@ angular.module('advancedSearchController', [])
                             return book.volumeInfo.title.toUpperCase() === searchData.title.toUpperCase()
                         }
                     })
-                    console.log($scope.searchBooks)
+                    
 
                 }
                 console.log(searchData.author)
@@ -34,7 +34,7 @@ angular.module('advancedSearchController', [])
                             }
                             
                         })
-                        console.log($scope.searchBooks)
+                        
                     
 
                 }

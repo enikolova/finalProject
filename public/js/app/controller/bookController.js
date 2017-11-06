@@ -20,7 +20,6 @@ angular.module('bookController', [])
         $scope.getComments = function () {
             $http.get('http://localhost:4000/comments/' + id).then(function (comment) {
                 $scope.comments = comment.data;
-                console.log('hnfgbdfsdasaa');
                 $scope.getBook()
             })
         }
@@ -32,11 +31,10 @@ angular.module('bookController', [])
 
 
                 $scope.rating = { rating: $scope.newComment.rating };
-                console.log($scope.rating);
                 $http.post('http://localhost:4000/books/' + id, $scope.rating).then(function () {
                     $scope.newComment = null;
                 })
-
+                
 
 
             })
@@ -59,6 +57,31 @@ angular.module('bookController', [])
                         $scope.errorMsg = ''
                     }, 2000)
                 }
+            })
+        }
+        $scope.removeFromFavourite = function () {
+            var userId = sessionStorage.getItem('user')
+
+            $http.post('http://localhost:4000/login/fav/remove/' + userId, { book: $scope.book }).then(function (data) {
+                if (data.data.success) {
+
+                    $scope.successMsg = data.data.message;
+                    $timeout(function () {
+                        $scope.successMsg = ''
+                    }, 2000)
+                } else {
+                    $scope.errorMsg = data.data.message;
+                    $timeout(function () {
+                        $scope.errorMsg = ''
+                    }, 2000)
+                }
+            })
+        }
+
+        $scope.getFav = function() {
+            var userId = sessionStorage.getItem('user')
+            $http.get('http://localhost:4000/login/fav/' + userId).then(function(data) {
+                console.log(data)
             })
         }
     });

@@ -17,6 +17,17 @@ router.get('/:user_id', function(req, res, next) {
     });
 });
 
+// GET favorite books
+router.get('/fav/:user_id', function(req,res,next) {
+    var db = req.db;
+    var collection = db.get('users');
+    var id = req.params.user_id;
+    
+    collection.find({ _id: id }, {}, function(e, docs) {
+        res.json(docs[0].favouriteBooks)
+      
+})
+})
 
 // POST to user favourite books
 router.post('/fav/:user_id', function(req,res,next) {
@@ -38,7 +49,32 @@ router.post('/fav/:user_id', function(req,res,next) {
             collection.update({_id:id}, docs[0], function() {
                 
             })
-            res.json({success: false, message: 'Book added to favourites !', data: docs[0]});
+            res.json({success: true, message: 'Book added to favourites !', data: docs[0]});
+        }
+       
+    });
+})
+// DELETE from Fav 
+router.post('/fav/remove/:user_id', function(req,res,next) {
+    console.log('vliza')
+    var db = req.db;
+    var collection = db.get('users');
+    var id = req.params.user_id;
+    var book = req.body.book;
+    console.log(book)
+    collection.find({ _id: id }, {}, function(e, docs) {
+        
+        if(!docs[0].favouriteBooks.some(function(x){
+           
+            return  x.volumeInfo.title === book.volumeInfo.title
+        })) {
+            res.json({success: false, message: 'This book is is not in your favourites !'})
+        } else {
+            docs[0].favouriteBooks.splice( docs[0].favouriteBooks.findIndex(x => x.volumeInfo.title == book.volumeInfo.title),1);
+            collection.update({_id:id}, docs[0], function() {
+                
+            })
+            res.json({success: true, message: 'Book removed from favourites !', data: docs[0]});
         }
        
     });

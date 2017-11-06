@@ -33,20 +33,20 @@ router.get('/:book_id', function(req, res, next) {
 });
 //POST --change book average rating and rating count
 router.post('/:book_id',function(req,res,next){
-    console.log('bgdfdcx');
+    
     var db=req.db;
     var collection=db.get('books');
     var id=req.params.book_id;
     var rating=Number(req.body.rating);
-    console.log(rating);
+    
     collection.find({_id:id},{},function(e,docs){
         var avgRating=Number(docs[0].volumeInfo.averageRating);
-         console.log(avgRating);
+         
         var newRating=(avgRating+rating)/2;
         var newRatingCount=docs[0].volumeInfo.ratingsCount+1;
         docs[0].volumeInfo.averageRating=newRating;
         docs[0].volumeInfo.ratingsCount=newRatingCount;
-         console.log(newRatingCount);
+         
         collection.update({_id:id},docs[0],function(e,docs){
             res.json({success:'success'});
         })

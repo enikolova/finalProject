@@ -1,15 +1,9 @@
 <br>
-<h2 class="title is-orange has-text-centered">Advanced Search</h2>
-<h4 class="subtitle">Books Search</h4>
+<h2 class="title is-orange has-text-centered">Advanced Book Search</h2>
 <br>
 
 <div class=" container is-pulled-left">
-<div class="field">
-  <label class="label">Keyword</label>
-  <div class="control">
-    <input class="input" type="text" placeholder="Keyword" name = 'keyword' ng-model = 'searchData.keyword'>
-  </div>
-</div>
+
 <div class="field">
   <label class="label">Author</label>
   <div class="control">
@@ -23,15 +17,27 @@
   </div>
 </div>
 <div class="field">
-  <label class="label">ISBN</label>
+  <label class="label">ISBN-10</label>
   <div class="control">
-    <input class="input" type="text" placeholder="ISBN" name = 'isbn' ng-model = 'searchData.isbn'>
+    <input class="input" type="text" placeholder="ISBN-10" name = 'isbn-10' ng-model = 'searchData.isbn10'>
+  </div>
+</div>
+<div class="field">
+  <label class="label">ISBN-13</label>
+  <div class="control">
+    <input class="input" type="text" placeholder="ISBN-13" name = 'isbn-13' ng-model = 'searchData.isbn13'>
   </div>
 </div>
 <div class="field">
   <label class="label">Publisher</label>
   <div class="control">
     <input class="input" type="text" placeholder="Publisher" name = 'publisher' ng-model = 'searchData.publisher'>
+  </div>
+</div>
+<div class="field">
+  <label class="label">Price</label>
+  <div class="control">
+    <input class="input" type="text" placeholder="Price" name = 'price' ng-model = 'searchData.price'>
   </div>
 </div>
 <a class="button is-info" ng-click = 'searchingForBooks(searchData)'>Search</a>

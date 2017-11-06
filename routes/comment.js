@@ -20,11 +20,24 @@ router.put('/:book_id',function(req,res,next){
   var text = req.body.text;
   var bookId = req.params.book_id;
   var username=req.session.username;
+  var userId = req.session.userId;
+  console.log(req.session)
   
   var comment=new Comments(title,rating,username,text,bookId);
 
     collection.insert(comment).then(function(data){
+        
+        var userCollection=db.get('users');
+        userCollection.find({_id:userId}).then(function(docs){
+            
+            docs[0].comments.push(comment);
+            userCollection.update({_id:userId}, docs[0], function() {
+                
+            })
+        })
         res.json('success')
     })
 })
+
+
 module.exports = router;
