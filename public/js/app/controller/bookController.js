@@ -1,5 +1,5 @@
 angular.module('bookController', [])
-    .controller('bookController', function ($http, $scope, $route, $rootScope, $routeParams, $location) {
+    .controller('bookController', function ($http, $scope, $route, $rootScope, $routeParams, $location, $timeout) {
         var id = location.hash.split("/")[2];
         $scope.userLogged = function () {
             if (sessionStorage.getItem('user')) {
@@ -12,7 +12,7 @@ angular.module('bookController', [])
             $http.get('http://localhost:4000/books/' + id).then(function (book) {
                 $scope.book = book.data;
                 $scope.bookRating = book.data.volumeInfo.averageRating
-                
+
                 //  $scope.newComment={};
             })
         }
@@ -29,8 +29,8 @@ angular.module('bookController', [])
         $scope.addComment = function () {
             $http.put('http://localhost:4000/comments/' + id, $scope.newComment).then(function () {
                 $scope.getComments();
-           
-                
+
+
                 $scope.rating = { rating: $scope.newComment.rating };
                 console.log($scope.rating);
                 $http.post('http://localhost:4000/books/' + id, $scope.rating).then(function () {
@@ -41,13 +41,24 @@ angular.module('bookController', [])
 
             })
         }
-        $scope.addToFavourite = function() {
+        $scope.addToFavourite = function () {
             var userId = sessionStorage.getItem('user')
-            console.log(userId)
-            // $scope.book =  {book: $scope.getBook()};
-            console.log($scope.book)
-            $http.post('http://localhost:4000/login/fav/' + userId, {book:$scope.book}).then(function(data) {
-                console.log(data)
+
+            $http.post('http://localhost:4000/login/fav/' + userId, { book: $scope.book }).then(function (data) {
+                if (data.data.success) {
+
+                    $scope.successMsg = data.data.message;
+                    $timeout(function () {
+                        $scope.successMsg = ''
+                    }, 2000)
+                } else {
+
+
+                    $scope.errorMsg = data.data.message;
+                    $timeout(function () {
+                        $scope.errorMsg = ''
+                    }, 2000)
+                }
             })
         }
     });

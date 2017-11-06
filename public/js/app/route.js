@@ -6,6 +6,7 @@ angular.module('appRoutes', ['ngRoute','authorController']).config(function($rou
     })
     .when('/advanced', {
         templateUrl: 'view/advancedSearch.htm',
+        controller: 'advancedSearchController'
         
     })
     .when('/login', {

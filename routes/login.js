@@ -25,13 +25,22 @@ router.post('/fav/:user_id', function(req,res,next) {
     var collection = db.get('users');
     var id = req.params.user_id;
     var book = req.body.book;
-    console.log(book)
+    
     collection.find({ _id: id }, {}, function(e, docs) {
-        docs[0].favouriteBooks.push(book);
-        collection.update({_id:id}, docs[0], function() {
-            
-        })
-        res.json(docs[0]);
+        
+        if(docs[0].favouriteBooks.some(function(x){
+           
+            return  x.volumeInfo.title === book.volumeInfo.title
+        })) {
+            res.json({success: false, message: 'This book is already added to favourites !'})
+        } else {
+            docs[0].favouriteBooks.push(book);
+            collection.update({_id:id}, docs[0], function() {
+                
+            })
+            res.json({success: false, message: 'Book added to favourites !', data: docs[0]});
+        }
+       
     });
 })
 

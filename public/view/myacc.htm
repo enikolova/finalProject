@@ -17,22 +17,22 @@
        
     </div>
     <div class="tile is-parent is-vertical">
-        <div class="tile is-child box is-12">
+        <div class="tile is-child box">
 
-            <h1 class='title is-12'>
+            <h1 class='title'>
                My favorite books:
             </h1>
-            <div class = 'columns is-onequarter' id = 'favBookAcc'>
+            <div class = 'columns' id = 'favBookAcc'>
                     
-            <div class = 'column is-onequarter' ng-repeat = 'book in user.favouriteBooks | limitTo: 4 : startIndex'>
+            <div class = 'column is-one-quarter' ng-repeat = 'book in user.favouriteBooks | limitTo: 4 : startIndex'>
                 <img width = '130' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="">
                 <p class = 'column'>{{book.volumeInfo.title}}</p>
             </div>
            
             </div>  
             <div class = 'level'>
-                    <a> <i class="fa fa-chevron-left level-left" aria-hidden="true" ng-click = 'prevPage()'></i></a> 
-                    <a><i class="fa fa-chevron-right level-right" aria-hidden="true" ng-click = 'nextPage()'></i></a>
+                    <a> <i class="fa fa-chevron-left level-left" aria-hidden="true" ng-click = 'prevPage()' ng-hide = '((user.favouriteBooks.length - 4) > startIndex )'></i></a> 
+                    <a><i class="fa fa-chevron-right level-right" aria-hidden="true" ng-click = 'nextPage() ' ng-hide = '(startIndex > (user.favouriteBooks.length - 4))'></i></a>
             </div>
 
         </div>

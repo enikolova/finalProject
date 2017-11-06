@@ -92,3 +92,9 @@ nav {
 .hero-body {
   padding: 0.5rem 1.5rem;
 }
+
+.msgBook {
+  margin-left: 50px;
+  vertical-align: -webkit-baseline-middle;
+  
+}

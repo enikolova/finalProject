@@ -17,6 +17,7 @@ var registration = require('./routes/registration');
 var books = require('./routes/books');
 var authors = require('./routes/authors');
 var login = require('./routes/login');
+var advancedSearch = require('./routes/advancedSearch')
 
 
 
@@ -109,6 +110,7 @@ app.use('/books', books);
 app.use('/authors',authors);
 app.use('/login', login)
 app.use('/comments',comment);
+app.use('/advancedSearch', advancedSearch);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
