@@ -42,7 +42,7 @@ angular.module('appRoutes', ['ngRoute','authorController']).config(function($rou
     })
     .when('/admin' , {
         templateUrl: 'view/admin.htm',
-        controller: 'accountController'
+        controller: 'adminController'
     })
     .when('/category/:category_name',{
         templateUrl:'view/booksByCategory.htm',
