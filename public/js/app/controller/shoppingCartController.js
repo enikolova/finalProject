@@ -1,9 +1,9 @@
-angular.module('shoppingCartController', [])
-.controller('shoppingCartController',function($http, $scope,$location) {
+angular.module('shoppingCartController', ['shoppingCartService'])
+.controller('shoppingCartController',function($http, $scope,$location,ShoppingCart) {
     var userId=sessionStorage.getItem('user');
     $scope.loadCart=function(){
- $http.get('http://localhost:4000/login/show/cart/'+userId).then(function(data){
-     console.log(data);
+ ShoppingCart.loadCart(userId).then(function(data){
+    
      $scope.cart=data.data;
       $scope.cart.forEach(function(book) {
            book.count =1;
@@ -20,14 +20,13 @@ $scope.loadCart()
      return total.toFixed(2);
  }
  $scope.removeFromCart=function(book){
-     $scope.bookk=book;
-     console.log($scope.bookk);
-     $http.post('http://localhost:4000/login/remove/'+userId ,{book : $scope.bookk}).then(function(){
+     $scope.book=book;
+   ShoppingCart.remove(userId,{book: $scope.book}).then(function(){
         $scope.loadCart();
      })
  }
  $scope.clear=function(){
-     $http.post('http://localhost:4000/login/clearCart/'+userId).then(function(){
+    ShoppingCart.clearCart(userId).then(function(){
          $location.path("successfulBuy")
      })
     

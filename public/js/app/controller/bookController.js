@@ -41,7 +41,7 @@ angular.module('bookController', ['bookService'])
             })
         }
         $scope.deleteComment = function (id) {
-           Book.delete(id).then(function () {
+           Book.deleteComment(id).then(function () {
                 $scope.getComments();
             })
         }

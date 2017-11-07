@@ -1,163 +1,209 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Emazon</title>
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-     
-     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css"> 
-     <link rel="stylesheet" href="css/bulmajs.min.css">
-      <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/animate.min.css">
-      <link rel="stylesheet" href="/css/home.css">
-      <link rel="stylesheet" href="css/bookLoading.css">
-      
-      
-    
 
-     
+<head>
+  <title>Emazon</title>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
-      
-    
-      <!-- angular app-->
-      <script src="js/app/app.js"></script>
-      <script src="js/app/route.js"></script>
-      <!-- services -->
-      <script src="js/app/service/registerService.js"></script>
-      <script src="js/app/service/accountService.js"></script>
-      <script src="js/app/service/advancedSearchService.js"></script>
-      <script src="js/app/service/bookService.js"></script>
-      <script src="js/app/service/mainService.js"></script>
-      
-      
-      
-      
-      <!-- controllers -->
-      <script src="js/app/controller/mainController.js"></script>
-      <script src="js/app/controller/bookController.js"></script>
-   <script src="js/app/controller/searchedBook.js"></script>      
-      <script src="js/app/controller/authorController.js"></script>
-      <script src="js/app/controller/registerController.js"></script>
-      <script src="js/app/controller/loginController.js"></script>
-      <script src="js/app/controller/accountController.js"></script>
-      <script src="js/app/controller/categoryController.js"></script>
-      <script src="js/app/controller/commentController.js"></script>
-      <script src="js/app/controller/advancedSearchController.js"></script>
-       <script src="js/app/controller/adminController.js"></script>
-        <script src="js/app/controller/shoppingCartController.js"></script>
-       <!-- <script src="js/models/comment.js"></script> -->
-      
-  </head>
-  <body ng-app = 'mainApp' ng-controller="mainController" >
-    <header>
-      <nav class="navbar " role="navigation" aria-label="dropdown navigation">
-    <div class="navbar-brand">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+  <link rel="stylesheet" href="css/bulmajs.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animate.min.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="css/bookLoading.css">
+
+
+
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+
+
+  <!-- angular app-->
+  <script src="js/app/app.js"></script>
+  <script src="js/app/route.js"></script>
+  <!-- services -->
+  <script src="js/app/service/registerService.js"></script>
+  <script src="js/app/service/accountService.js"></script>
+  <script src="js/app/service/advancedSearchService.js"></script>
+  <script src="js/app/service/bookService.js"></script>
+  <script src="js/app/service/mainService.js"></script>
+  <script src="js/app/service/adminService.js"></script>
+  <script src="js/app/service/authorService.js"></script>
+  <script src="js/app/service/categoryService.js"></script>
+  <script src="js/app/service/commentService.js"></script>
+  <script src="js/app/service/loginService.js"></script>
+  <script src="js/app/service/shoppingCartService.js"></script>
+  <!-- controllers -->
+  <script src="js/app/controller/mainController.js"></script>
+  <script src="js/app/controller/bookController.js"></script>
+  <script src="js/app/controller/searchedBook.js"></script>
+  <script src="js/app/controller/authorController.js"></script>
+  <script src="js/app/controller/registerController.js"></script>
+  <script src="js/app/controller/loginController.js"></script>
+  <script src="js/app/controller/accountController.js"></script>
+  <script src="js/app/controller/categoryController.js"></script>
+  <script src="js/app/controller/commentController.js"></script>
+  <script src="js/app/controller/advancedSearchController.js"></script>
+  <script src="js/app/controller/adminController.js"></script>
+  <script src="js/app/controller/shoppingCartController.js"></script>
+  <!-- <script src="js/models/comment.js"></script> -->
+
+</head>
+
+<body ng-app='mainApp' ng-controller="mainController">
+  <header>
+    <nav class="navbar " role="navigation" aria-label="dropdown navigation">
+      <div class="navbar-brand">
         <!-- Your other HTML here -->
-         <a href = "#!/" class=" navbar-item is-large">
-    <img src="/img/logo3.png"  class="is-large animated bounceInRight" />
-  </a>
-    
-    </div>
-    </div>
-    <div class="field has-addons">
+        <a href="#!/" class=" navbar-item is-large">
+          <img src="/img/logo3.png" class="is-large animated bounceInRight" />
+        </a>
+
+      </div>
+      </div>
+      <div class="field has-addons">
         <p class="control">
           <a class="button is-static">
-     Books
-    </a>
+            Books
+          </a>
         </p>
         <div class="control ">
           <input class="input is-normal search" type="text" ng-model="search.volumeInfo.title" placeholder="Title">
-            <a class="button is-orange"> Search</a>
+          <a class="button is-orange"> Search</a>
           <div id='find' class="column" ng-show="search.volumeInfo.title.length>0">
             <p ng-show="(all | filter:search).length==0">No results</p>
             <article ng-repeat="book in all | filter:search | limitTo:5">
-              <p><a href="#!/books/{{book.volumeInfo.title}}" ng-click="search.volumeInfo.title=''">{{book.volumeInfo.title}}</a></p>
+              <p>
+                <a href="#!/books/{{book.volumeInfo.title}}" ng-click="search.volumeInfo.title=''">{{book.volumeInfo.title}}</a>
+              </p>
               <hr ng-hide="$index==4">
-              
-         
-          </article>
+
+
+            </article>
+          </div>
+
         </div>
-
-      </div>
-      
-</nav>
-
-<div class="tabs is-centered">
-  <ul>
-    <li class="is-active"><a href='#!/'>Books</a></li>
-    <li><a href='#!/advanced'>Advanced search</a></li>
-    <li><a ng-show = '!checkLogIn()' class = 'modal-button' href="#!/login" >Log in</a></li>
-    <li><a ng-show =  'checkLogIn()' class = 'modal-button' href="#!/myacc"  ng-if="!isAdmin()" >My Acc</a></li>
-    <li><a ng-show =  'checkLogIn()' class = 'modal-button' href="#!/admin" ng-if="isAdmin()" >My Acc</a></li>
-    <li><a ng-show =  'checkLogIn()' class = 'modal-button' href="#!/shoppingCart" ng-if="!isAdmin()" >My Cart</a></li>
-    <li><a ng-show =  'checkLogIn()' class = 'modal-button' ng-click = 'logOut()'>Log out</a></li>
-  </ul>
-</div>
-    </header>
-
-
-    <main class = 'hero is-fullhd'>
-            
-      <div ng-view class = 'hero-body'>
-        
-      </div>
-       
 
     </nav>
 
-    
+    <div class="tabs is-centered">
+      <ul>
+        <li class="is-active">
+          <a href='#!/'>Books</a>
+        </li>
+        <li>
+          <a href='#!/advanced'>Advanced search</a>
+        </li>
+        <li>
+          <a ng-show='!checkLogIn()' class='modal-button' href="#!/login">Log in</a>
+        </li>
+        <li>
+          <a ng-show='checkLogIn()' class='modal-button' href="#!/myacc" ng-if="!isAdmin()">My Acc</a>
+        </li>
+        <li>
+          <a ng-show='checkLogIn()' class='modal-button' href="#!/admin" ng-if="isAdmin()">My Acc</a>
+        </li>
+        <li>
+          <a ng-show='checkLogIn()' class='modal-button' href="#!/shoppingCart" ng-if="!isAdmin()">My Cart</a>
+        </li>
+        <li>
+          <a ng-show='checkLogIn()' class='modal-button' ng-click='logOut()'>Log out</a>
+        </li>
+      </ul>
+    </div>
   </header>
 
-  <div id="footer">
-    <div class="hero is-dark is-small">
-      <a class="button is-dark">Back to top</a>
-    </div>
-    <footer class="hero footer is-dark">
-      <div class="hero is-dark">
-        <div class="content has-text-centered">
-          <div>
-            <div class="columns">
-              <div class="column">
-                <ul>
-                  <li><a href="#">Get to Know Us</a></li>
-                  <li><a href="#">Careers</a></li>
-                  <li><a href="#">About Emazon</a></li>
-                </ul>
-              </div>
-              <div class="column">
-                <ul>
-                  <li><a href="#">Make Money With Us</a></li>
-                  <li><a href="#">Sell on Emazon</a></li>
-                  <li><a href="#">Advertise your products</a></li>
-                  <li><a href="#">Become an Emazon vendor</a></li>
-                  <li><a href="#">Become an Affliate</a></li>
-                </ul>
-              </div>
 
-              <div class="column">
-                <ul>
-                  <li><a href="#">Let Us Help You</a></li>
-                  <li><a href="#">Your account</a></li>
-                  <li><a href="#">Your orders</a></li>
-                  <li><a href="#">Returns and Replacements</a></li>
-                  <li><a href="#">Help</a></li>
-                </ul>
+  <main class='hero is-fullhd'>
+
+    <div ng-view class='hero-body'>
+
+    </div>
+
+
+    </nav>
+
+
+    </header>
+
+    <div id="footer">
+      <div class="hero is-dark is-small">
+        <a class="button is-dark">Back to top</a>
+      </div>
+      <footer class="hero footer is-dark">
+        <div class="hero is-dark">
+          <div class="content has-text-centered">
+            <div>
+              <div class="columns">
+                <div class="column">
+                  <ul>
+                    <li>
+                      <a href="#">Get to Know Us</a>
+                    </li>
+                    <li>
+                      <a href="#">Careers</a>
+                    </li>
+                    <li>
+                      <a href="#">About Emazon</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <ul>
+                    <li>
+                      <a href="#">Make Money With Us</a>
+                    </li>
+                    <li>
+                      <a href="#">Sell on Emazon</a>
+                    </li>
+                    <li>
+                      <a href="#">Advertise your products</a>
+                    </li>
+                    <li>
+                      <a href="#">Become an Emazon vendor</a>
+                    </li>
+                    <li>
+                      <a href="#">Become an Affliate</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="column">
+                  <ul>
+                    <li>
+                      <a href="#">Let Us Help You</a>
+                    </li>
+                    <li>
+                      <a href="#">Your account</a>
+                    </li>
+                    <li>
+                      <a href="#">Your orders</a>
+                    </li>
+                    <li>
+                      <a href="#">Returns and Replacements</a>
+                    </li>
+                    <li>
+                      <a href="#">Help</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-    </footer>
-    <div class="hero is-dark is-small">
-      <ul id='inFoot'>
-        <li>Condition Of Use</li>
-        <li>Privacy Notice</li>
-      </ul>
-    </div>
+      </footer>
+      <div class="hero is-dark is-small">
+        <ul id='inFoot'>
+          <li>Condition Of Use</li>
+          <li>Privacy Notice</li>
+        </ul>
+      </div>
 
 </body>
 
