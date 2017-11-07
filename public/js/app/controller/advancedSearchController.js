@@ -1,7 +1,7 @@
 angular.module('advancedSearchController', [])
 
     .controller('advancedSearchController', function ($scope, $http, $location,$rootScope) {
-       
+      
         $scope.searchingForBooks = function (searchData) {
             console.log(searchData)
             // $http.post('http://localhost:4000/advancedSearch/', searchData).then(function(data) {
@@ -28,7 +28,7 @@ angular.module('advancedSearchController', [])
                 
                             if(book.volumeInfo.authors !== undefined) {
                                 if (book.volumeInfo.authors.some(function (x) {
-                                    return x == searchData.author
+                                    return x.split('').join('').toUpperCase() == searchData.author.split('').join('').toUpperCase()
                                 })) {
                                     return book;
                                 }
@@ -91,9 +91,22 @@ angular.module('advancedSearchController', [])
                
              
             $rootScope.allB=$scope.searchBooks
+            
             })
             
             
+        }
+        $scope.startIndex = 0;
+        $scope.currentPage = 1;
+        $scope.nextPage = function() {
+            $scope.currentPage += 1;
+           $scope.startIndex += 5;
+         
+            
+        }
+        $scope.prevPage = function() {
+            $scope.currentPage -= 1;
+            $scope.startIndex -= 5;
         }
         
     })

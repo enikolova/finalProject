@@ -2,7 +2,7 @@ angular.module('accountController', [])
 
     .controller('accountController', function ($scope, $http) {
         var id = sessionStorage.getItem('user')
-
+        $scope.loading = true;
         $http.get('http://localhost:4000/books/').then(function (books) {
             $scope.books = books.data;
             $http.get('http://localhost:4000/login/' + id).then(function (data) {
@@ -17,9 +17,11 @@ angular.module('accountController', [])
                         return book._id == comment.bookId
                     }).volumeInfo.title
                     console.log(comment.bookTitle)
-
+                    
                 });
+                
             })
+            $scope.loading = false;
         })
 
   

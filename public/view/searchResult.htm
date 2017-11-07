@@ -13,22 +13,27 @@
     </select>
       </div>
     </div>
+    <div ng-show = 'allB.length == 0'>
+      <p class = 'title'>No results for this search</p>
+    </div>
+    <div class="bookshelf_wrapper" ng-show= 'loading'>
+      <ul class="books_list">
+        <li class="book_item first"></li>
+        <li class="book_item second"></li>
+        <li class="book_item third"></li>
+        <li class="book_item fourth"></li>
+        <li class="book_item fifth"></li>
+        <li class="book_item sixth"></li>
+      </ul>
+      <div class="shelf"></div>
+    </div>
     <div>
         
-        <div class="bookshelf_wrapper" ng-show= 'loading'>
-          <ul class="books_list">
-            <li class="book_item first"></li>
-            <li class="book_item second"></li>
-            <li class="book_item third"></li>
-            <li class="book_item fourth"></li>
-            <li class="book_item fifth"></li>
-            <li class="book_item sixth"></li>
-          </ul>
-          <div class="shelf"></div>
-        </div>
+        
+       
       <br>
         <ul>
-            <li ng-repeat="book in allB">
+            <li ng-repeat="book in allB | limitTo: 5 : startIndex">
               <div class="columns"  >
                 <div class="column is-3">
                   <img ng-if='book.volumeInfo.imageLinks.thumbnail' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="" width="130">
@@ -52,14 +57,14 @@
               </div>
               
             </li>
-            <div class="pagination is-centered is-medium" role="navigation" aria-label="pagination">
+            <div ng-show = 'allB.length > 0' class="pagination is-centered is-medium" role="navigation" aria-label="pagination">
                 <a class="pagination-previous" ng-show = 'currentPage == 1'>Previous</a>
                 <a class="pagination-previous" ng-click = 'prevPage()' ng-show = 'currentPage > 1'>Previous</a>
-                <a class="pagination-next" ng-click = 'nextPage()' ng-hide = '(startIndex > (booksByAuthor.length - 5))'>Next page</a>
+                <a class="pagination-next" ng-click = 'nextPage()' ng-hide = '(startIndex > (allB.length - 6))'>Next page</a>
                 <ul class="pagination-list">
                   <li><a class="pagination-link"  ng-click = 'prevPage()' ng-show = 'currentPage > 1'>{{currentPage - 1}}</a></li>
                   <li><a class="pagination-link is-current"  aria-current="page">{{currentPage}}</a></li>
-                  <li><a class="pagination-link" ng-click = 'nextPage()' ng-hide = '(startIndex > (booksByAuthor.length - 5))'>{{currentPage + 1}}</a></li>
+                  <li><a class="pagination-link" ng-click = 'nextPage()' ng-hide = '(startIndex > (allB.length - 6))'>{{currentPage + 1}}</a></li>
                
                 </ul>
               </div>

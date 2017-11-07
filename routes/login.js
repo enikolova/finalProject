@@ -38,18 +38,17 @@ router.post('/fav/:user_id', function(req,res,next) {
     var book = req.body.book;
     
     collection.find({ _id: id }, {}, function(e, docs) {
-        
-        if(docs[0].favouriteBooks.some(function(x){
+        var user = docs[0];
+        if(user.favouriteBooks.some(function(x){
            
             return  x.volumeInfo.title === book.volumeInfo.title
         })) {
-            res.json({success: false, message: 'This book is already added to favourites !'})
+            res.json({success: false, message: 'This book is already added to favourites !', data: user})
         } else {
-            docs[0].favouriteBooks.push(book);
-            collection.update({_id:id}, docs[0], function() {
-                
-            })
-            res.json({success: true, message: 'Book added to favourites !', data: docs[0]});
+            user.favouriteBooks.push(book);
+            collection.update({_id:id}, user, function() {
+                res.json({success: true, message: 'Book added to favourites !', data: user});
+            });
         }
        
     });
@@ -70,7 +69,7 @@ router.delete('/remove/:user_id',function(req,res,next){
     collection.remove({_id:id},{},function(e,docs){
         res.send('success');
         var commentCollection=db.get('comments');
-        c
+        
     })
 })
 // DELETE from Fav 
@@ -90,9 +89,9 @@ router.post('/fav/remove/:user_id', function(req,res,next) {
         } else {
             docs[0].favouriteBooks.splice( docs[0].favouriteBooks.findIndex(x => x.volumeInfo.title == book.volumeInfo.title),1);
             collection.update({_id:id}, docs[0], function() {
-                
-            })
-            res.json({success: true, message: 'Book removed from favourites !', data: docs[0]});
+                res.json({success: true, message: 'Book removed from favourites !', data: docs[0]});
+            });
+            
         }
        
     });
@@ -123,20 +122,6 @@ router.post('/', function(req, res, next) {
     })
 });
 
-// login with facebook
-// router.get('/facebook',
-// passport.authenticate('facebook'));
 
-// router.get('/facebook/return', 
-// passport.authenticate('facebook', { failureRedirect: '#!/login' }),
-// function(req, res) {
-//   res.redirect('/');
-// });
-
-// router.get('/profile',
-// require('connect-ensure-login').ensureLoggedIn(),
-// function(req, res){
-//   res.render('profile', { user: req.user });
-// });
 
 module.exports = router

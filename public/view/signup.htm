@@ -10,33 +10,33 @@
                     <form ng-submit = 'register(regData)' >
                         <div class="field">
                             <div class="control">
-                                <input name = 'username' class="input is-large" type="text" placeholder="Your Username" autofocus="" ng-model = 'regData.username'>
+                                <input name = 'username' class="input is-large" type="text" placeholder="Your Username" autofocus="" ng-model = 'regData.username' required>
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
-                                <input name = 'email' class="input is-large" type="email" placeholder="Your Email" autofocus="" ng-model = 'regData.email'>
+                                <input name = 'email' class="input is-large" type="email" placeholder="Your Email" autofocus="" ng-model = 'regData.email' required>
                             </div>
                         </div>
 
                         <div class="field">
                             <div class="control">
-                                <input name = 'password' class="input is-large" type="password" placeholder="Your Password" ng-model = 'regData.password'>
+                                <input name = 'password' class="input is-large" type="password" placeholder="Your Password" ng-model = 'regData.password' required>
                             </div>
                         </div>
                         <div class="field">
                                 <div class="control">
-                                    <input name = 'repeatPassword' class="input is-large" type="password" placeholder="Repeat your Password" ng-model = 'regData.repeatPassword'>
+                                    <input name = 'repeatPassword' class="input is-large" type="password" placeholder="Repeat your Password" ng-model = 'regData.repeatPassword' required>
                                 </div>
                             </div>
-                        <button type = 'submit' class="button is-block is-info is-large">Sign Up</button>
+                        <button type = 'submit' class="button is-block is-info is-large" style = 'width:100%'>Sign Up</button>
                     </form>
                     <p ng-show = 'successMsg' class = 'successMsg'> {{successMsg}}</p>
                     <p ng-show = 'errorMsg' class = 'errorMsg'> {{errorMsg}}</p>
                 </div>
                 <p class="has-text-grey">
                     <p class= "has-text-grey">Have an account</p>
-                    <a href="#!/login">Log in</a> &nbsp;·&nbsp;
+                    <a href="#!/login" class = 'button is-dark'>Log in</a> &nbsp;·&nbsp;
                     
                 </p>
                

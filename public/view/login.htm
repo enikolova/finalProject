@@ -12,23 +12,17 @@
                                 <form ng-submit = 'doLogin(loginData)' > 
                                   <div class="field">
                                     <div class="control">
-                                      <input class="input is-large" type="email" name = 'email' placeholder="Your Email" autofocus="" ng-model='loginData.email'>
+                                      <input class="input is-large" type="email" name = 'email' placeholder="Your Email" autofocus="" ng-model='loginData.email' required>
                                     </div>
                                   </div>
                     
                                   <div class="field">
                                     <div class="control">
-                                      <input class="input is-large" type="password" name = 'password' placeholder="Your Password" ng-model='loginData.password'>
+                                      <input class="input is-large" type="password" name = 'password' placeholder="Your Password" ng-model='loginData.password' required>
                                     </div>
                                   </div>
-                                  <div class="field">
-                                    <label class="checkbox">
-                                      <input type="checkbox">
-                                      Remember me
-                                    </label>
-                                  </div>
-                                  <button class="button is-block is-info is-large">Login</button>
-                                  <a href="/auth/facebook"><img src="../img/facebookBtn.png" alt="" ></a> 
+                                 
+                                  <button class="button is-block is-info is-large" style = 'width:100%'>Login</button>
                                 </form>
                                 <p ng-show = 'successMsg' class = 'successMsg'> {{successMsg}}</p>
                                 <p ng-show = 'errorMsg' class = 'errorMsg'> {{errorMsg}}</p>

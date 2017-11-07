@@ -7,7 +7,7 @@ angular.module('searchedBook', [])
          $scope.book = book.data;
         var id=book.data._id;
            $scope.getComments=function(){
-$http.get('http://localhost:4000/comments/'+id).then(function(comment){
+    $http.get('http://localhost:4000/comments/'+id).then(function(comment){
         $scope.comments=comment.data;
     })
    } 

@@ -38,7 +38,7 @@
               <div class="shelf"></div>
             </div>
           <br>
-            <ul>
+            <ul ng-show = '!loading'>
                 <li ng-repeat="book in booksByAuthor | orderBy: sortBooks  | limitTo : 5 : startIndex">
                   <div class="columns"  >
                     <div class="column is-3">
@@ -63,7 +63,7 @@
                   </div>
                   
                 </li>
-                <div class="pagination is-centered is-medium" role="navigation" aria-label="pagination">
+                <div ng-show ='!loading' class="pagination is-centered is-medium" role="navigation" aria-label="pagination">
                     <a class="pagination-previous" ng-show = 'currentPage == 1'>Previous</a>
                     <a class="pagination-previous" ng-click = 'prevPage()' ng-show = 'currentPage > 1'>Previous</a>
                     <a class="pagination-next" ng-click = 'nextPage()' ng-hide = '(startIndex > (booksByAuthor.length - 5))'>Next page</a>

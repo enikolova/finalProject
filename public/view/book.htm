@@ -14,14 +14,7 @@
       </progress></p>
      
     </div>
-    <!-- <div class="tile is-child box">
-       <h2 class="subtitle">Product details</h2>
-            <p><strong>Pages:</strong> {{book.volumeInfo.pageCount}}</p>
-            <p><strong>Publisher: </strong>{{book.volumeInfo.publisher}}</p>
-            <p><strong>Language: </strong>{{book.volumeInfo.language}}</p>
-            <p><strong>ISBN-10: </strong>{{book.volumeInfo.industryIdentifiers[1].identifier}}</p>
-            <p><strong>ISBN-13: </strong> {{book.volumeInfo.industryIdentifiers[0].identifier}}</p>
-    </div> -->
+    
   </div>
   <div class="tile is-parent is-vertical">
     <div class="tile is-child box">
@@ -48,13 +41,10 @@
             <br>
             <a href="" ng-if="!book.saleInfo.listPrice.amount" class="buyBookBtn button is-info subtitle " disabled> Add to cart</a>
             <a href="" ng-if="book.saleInfo.listPrice.amount" class='buyBookBtn button is-info  subtitle '>Add to cart</a>
-            <a href="" class='buyBookBtn button is-info  subtitle ' ng-if = 'userLogged()' ng-click = 'addToFavourite()'>Add to favourites</a> 
-            <a href="" class='buyBookBtn button is-info  subtitle ' ng-if = '!userLogged()' disabled>Add to favourites</a> 
-            <a href="" class='buyBookBtn button is-info  subtitle ' ng-if = 'userLogged()' ng-click = 'removeFromFavourite()' ng-show = ''>Remove from favourites</a> 
-            <a href="" class='buyBookBtn button is-info  subtitle ' ng-if = '!userLogged()' disabled>Remove from favourites</a> 
+            <a href="" class='buyBookBtn button is-info  subtitle ' ng-show = '!book.isFav' ng-click = 'addToFavourite()' >Add to favourites</a> 
+            <a href="" class='buyBookBtn button is-info  subtitle ' ng-show = 'book.isFav' ng-click = 'removeFromFavourite()' >Remove from favourites</a> 
             <span ng-show = 'successMsg' class='successMsg msgBook is-success' >{{successMsg}}</span>
-            <span ng-show = 'errorMsg' class = 'errorMsg msgBook'>{{errorMsg}}</span>
-            
+            <span ng-show = 'errorMsg' class = 'errorMsg msgBook'>{{errorMsg}}</span>      
           </div>
 
     <div class="tile is-child box">
