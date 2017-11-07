@@ -129,9 +129,7 @@ router.delete('/remove/:user_id',function(req,res,next){
     var collection = db.get('users');
     var id = req.params.user_id;
     collection.remove({_id:id},{},function(e,docs){
-        res.send('success');
-        var commentCollection=db.get('comments');
-        
+        res.send({msg:"successful"});
     })
 })
 // DELETE from Fav 

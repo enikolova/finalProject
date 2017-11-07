@@ -1,4 +1,4 @@
-<section class="hero is-orange welcome is-small">
+<section class="hero is-orange welcome is-small animation rubberBand">
     <div class="hero-body">
         <div class="container">
             <h1 class="title">
@@ -42,7 +42,7 @@
             <div class="card-content">
                 <div class="content">
                     <div class="control has-icons-left has-icons-right">
-                        <input class="input is-large" type="text" ng-model="search.volumeInfo.title" placeholder="">
+                        <input class="input is-large" type="text" ng-model="s.volumeInfo.title" placeholder="">
                         <span class="icon is-medium is-left">
                       <i class="fa fa-search"></i>
                     </span>
@@ -51,11 +51,11 @@
                     </span>
                     </div>
                
-                <div id='findA' class="column is-11" ng-show="search.volumeInfo.title.length>0">
-                    <p ng-show="(all | filter:search).length==0">No results</p>
-                    <article ng-repeat="book in all| filter:search | limitTo:5">
-                        <p><a href="#!/books/{{book.volumeInfo.title}}" ng-click="search.volumeInfo.title=''">{{book.volumeInfo.title}}</a>
-  <span class="level-right"><button class="delete" ng-click="deleteBook(book._id)"></button></span></p> 
+                <div id='findA' class="column is-11" ng-show="s.volumeInfo.title.length>0">
+                    <p ng-show="(all | filter:s).length==0">No results</p>
+                    <article ng-repeat="book in all| filter:s | limitTo:5">
+                        <p><a href="#!/books/{{book.volumeInfo.title}}" ng-click="s.volumeInfo.title=''">{{book.volumeInfo.title}}</a>
+  <span class="level-right"><button class="delete"  ng-click="deleteBook(book._id)"></button></span></p> 
                         <hr ng-hide="$index==4">
 
                     </article>
@@ -92,7 +92,7 @@
                     <p ng-show="(allUsers | filter:users).length==0">No results</p>
                     <article ng-repeat="user in allUsers| filter:users | limitTo:5">
                         <p><a >{{user.username}}</a>
-  <span class="level-right"><button class="delete" ng-click="deleteBook(book._id)"></button></span></p> 
+  <span class="level-right"><button class="delete" ng-click="deleteUser(user._id)"></button></span></p> 
                         <hr ng-hide="$index==4">
 
                     </article>
