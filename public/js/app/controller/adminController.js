@@ -9,6 +9,7 @@ $http.get('http://localhost:4000/books/').then(function(docs) {
   $scope.allBooks();
   $scope.deleteBook=function(bookId){
       $http.delete('http://localhost:4000/books/book/remove/'+bookId).then(function(){
+          $scope.s.volumeInfo.title=''
         $scope.allBooks();
       })
   }
