@@ -147,7 +147,10 @@ router.post('/fav/remove/:user_id', function(req,res,next) {
        
     });
 })
-
+router.post('/profile/logout', function(req, res, next) {
+    req.session.destroy();
+    res.json({message: 'successful logout'})
+})
 
 /* POST to logIn. */
 router.post('/', function(req, res, next) {

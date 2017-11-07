@@ -24,5 +24,11 @@ angular.module('mainController', [])
         return false
     }
 }
- 
+ $scope.logOut = function() {
+     console.log('logaouuuuuuut')
+     $http.post('http://localhost:4000/login/profile/logout').then(function(data) {
+         console.log(data)
+         sessionStorage.clear()
+     })
+ }
 })

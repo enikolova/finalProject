@@ -10,12 +10,12 @@
                     <form ng-submit = 'register(regData)' >
                         <div class="field">
                             <div class="control">
-                                <input name = 'username' class="input is-large" type="text" placeholder="Your Username" autofocus="" ng-model = 'regData.username' required>
+                                <input name = 'username' class="input is-large" type="text" placeholder="Your Name" autofocus="" ng-model = 'regData.username' required ng-minlength="3" ng-maxlength="15">
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
-                                <input name = 'email' class="input is-large" type="email" placeholder="Your Email" autofocus="" ng-model = 'regData.email' required>
+                                <input name = 'email' class="input is-large" type="email" placeholder="Your Email" autofocus="" ng-model = 'regData.email' required ng-minlength="3" ng-maxlength="15">
                             </div>
                         </div>
 

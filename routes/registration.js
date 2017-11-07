@@ -13,15 +13,18 @@ router.post('/', function(req, res, next) {
 
   var db = req.db;
   var collection = db.get("users");
-  collection.find({ email: email }).then(function(data) {
+  collection.find({ email: email}).then(function(data) {
       if (data.length == 0) {
           if (password === repeatPassword) {
             password = bcrypt.hashSync(password, 10)
-            
+                
               var user = new User(username, email, password);
-              collection.insert(user);
-              res.json({success: true,message: "Succesful registration !"})
-              
+              if(!user) {
+                res.json({success: true,message: "User not created !"})
+              } else {
+                collection.insert(user);
+                res.json({success: true,message: "Succesful registration !"})
+              }              
           } else {
               res.json({success:false ,message: "Passwords don't match!"})
           }

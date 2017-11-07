@@ -84,7 +84,7 @@
     <li><a ng-show =  'checkLogIn()' class = 'modal-button' href="#!/myacc"  ng-if="!isAdmin()" >My Acc</a></li>
     <li><a ng-show =  'checkLogIn()' class = 'modal-button' href="#!/admin" ng-if="isAdmin()" >My Acc</a></li>
     <li><a ng-show =  'checkLogIn()' class = 'modal-button' href="#!/shoppingCart" ng-if="!isAdmin()" >My Cart</a></li>
-    <li><a ng-show =  'checkLogIn()' class = 'modal-button' href="#!/admin">Log out</a></li>
+    <li><a ng-show =  'checkLogIn()' class = 'modal-button' ng-click = 'logOut()'>Log out</a></li>
   </ul>
 </div>
     </header>
