@@ -1,12 +1,11 @@
-angular.module('authorController', [])
-    .controller('authorController', function ($http, $scope, $rootScope, $routeParams, $location) {
+angular.module('authorController', ['authorService'])
+    .controller('authorController', function ($http, $scope, $rootScope, $routeParams, $location,Author) {
         $scope.loading = true;
         var name = location.hash.split('/')[2];
         name = name.split('%20').join(' ');
-        console.log(name);
-        $http.get('http://localhost:4000/authors/' + name).then(function (author) {
+       Author.getAuthor(name).then(function (author) {
             $scope.author = author.data;
-            $http.get('http://localhost:4000/books/').then(function (books) {
+            Author.allBooks().then(function (books) {
                 $scope.loading = false; 
             $scope.booksByAuthor = books.data.filter(function (b) {
 

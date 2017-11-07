@@ -1,12 +1,11 @@
-angular.module('loginController', [])
-.controller('loginController', function($http, $location, $scope, $timeout) {
+angular.module('loginController', ['loginService'])
+.controller('loginController', function($http, $location, $scope, $timeout,Login) {
     
     $scope.doLogin = function(loginData) {
         
         $scope.errorMsg = false;
        
-        $http.post('/login', loginData).then(function(data) {
-            console.log(data)
+       Login.login(loginData).then(function(data) {
            if(data.data.success) {
                 $scope.successMsg = data.data.message
 
@@ -20,28 +19,6 @@ angular.module('loginController', [])
            }
         })
     }
-    // $scope.doFacebookLogin = function() {
   
-        
-    //     $scope.errorMsg = false;
-       
-    //     $http.get('/oath/facebook').then(function(data) {
-    //         if(err) {
-    //             console.log(err)
-    //         }
-    //         console.log(data)
-        //    if(data.data.success) {
-        //         $scope.successMsg = data.data.message
-        //         //redirect to home
-        //         $timeout(function() {
-        //             $location.path('#!/')
-        //         }, 2000)
-        //        sessionStorage.setItem('user', data.data.user) 
-        //    } else {
-        //         $scope.errorMsg = data.data.message
-        //    }
-    //     })
-    // }
-
     
 })

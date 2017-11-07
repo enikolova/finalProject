@@ -1,27 +1,27 @@
-angular.module('adminController', [])
-.controller('adminController',function($http, $scope) {
+angular.module('adminController', ['adminService'])
+.controller('adminController',function($http, $scope,Admin) {
  $scope.allBooks=function(){
-$http.get('http://localhost:4000/books/').then(function(docs) {  
+Admin.allBooks().then(function(docs) {  
         $scope.all=docs.data;
         $scope.booksLength=docs.data.length;
   });
  } 
   $scope.allBooks();
   $scope.deleteBook=function(bookId){
-      $http.delete('http://localhost:4000/books/book/remove/'+bookId).then(function(){
+      Admin.deleteBook(bookId).then(function(){
           $scope.s.volumeInfo.title=''
         $scope.allBooks();
       })
   }
   $scope.allUser=function(){
-      $http.get('http://localhost:4000/login/').then(function(docs) {  
+     Admin.allUsers().then(function(docs) {  
         $scope.allUsers=docs.data;
         $scope.usersLength=docs.data.length;
   });
 }
 $scope.allUser();
 $scope.deleteUser=function(userId){
-    $http.delete('http://localhost:4000/login/remove/'+userId).then(function(docs) {  
+   Admin.deleteUser(userId).then(function(docs) {  
         $scope.allUser();
 })
 }

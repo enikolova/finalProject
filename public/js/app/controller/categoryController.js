@@ -1,5 +1,5 @@
-angular.module('categoryController', [])
-    .controller('categoryController', function ($http, $scope, $route, $rootScope, $routeParams, $location) {
+angular.module('categoryController', ["categoryService"])
+    .controller('categoryController', function ($http, $scope, $route, $rootScope, $routeParams, $location,Category) {
         var category = location.hash.split("/")[2];
         $scope.currentPage = 1;
         $scope.startIndex = 0;
