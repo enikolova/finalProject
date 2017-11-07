@@ -28,7 +28,58 @@ router.get('/fav/:user_id', function(req,res,next) {
       
 })
 })
+//GET --all books in the cart
+router.get('/show/cart/:user_id',function(req,res,next){
+     var db = req.db;
+    var collection = db.get('users');
+      var id = req.params.user_id
+      
+      collection.find({_id:id},{},function(e,docs){
+          console.log(docs[0])
+          res.json(docs[0].cart);
 
+      })
+
+})
+router.post('/cart/:user_id',function(req,res,next){
+     var db = req.db;
+    var collection = db.get('users');
+    var id = req.params.user_id;
+     var book = req.body.book;
+   
+      collection.find({ _id: id }, {}, function(e, docs) {
+        
+        if(docs[0].cart.some(function(x){
+           
+            return  x.volumeInfo.title === book.volumeInfo.title;
+        })) {
+            res.json({success: false, message: 'This book is already added in the cart !'})
+        } else {
+            docs[0].cart.push(book);
+            collection.update({_id:id}, docs[0], function() {
+                  res.json({success: true, message: 'Book added in the cart !', data: docs[0]});
+            })
+          
+        }
+       
+    });
+})
+//DELETE from user cart
+router.post('/remove/:user_id',function(req,res,next){
+     var db = req.db;
+    var collection = db.get('users');
+    var id = req.params.user_id;
+    console.log(req.body);
+    var book = req.body.book;
+    console.log(book);
+    collection.find({_id:id},{},function(e,docs){
+        console.log(docs[0]);
+        docs[0].cart.splice(docs[0].cart.findIndex(x=>x.volumeInfo.title==book.volumeInfo.title),1);
+        collection.update({_id:id},docs[0],function(e,d){
+             console.log('success');
+        })
+    })
+})
 // POST to user favourite books
 router.post('/fav/:user_id', function(req,res,next) {
     console.log('vliza')

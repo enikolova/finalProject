@@ -9,6 +9,11 @@ angular.module('appRoutes', ['ngRoute','authorController']).config(function($rou
         controller: 'advancedSearchController'
         
     })
+     .when('/shoppingCart', {
+        templateUrl: 'view/shoppingCart.htm',
+        controller: 'shoppingCartController'
+        
+    })
     .when('/advancedResult', {
         templateUrl: 'view/searchResult.htm',
         controller: 'advancedSearchController'
