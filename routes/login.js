@@ -74,15 +74,26 @@ router.post('/remove/:user_id',function(req,res,next){
     console.log(book);
     collection.find({_id:id},{},function(e,docs){
         console.log(docs[0]);
-        docs[0].cart.splice(docs[0].cart.findIndex(x=>x.volumeInfo.title==book.volumeInfo.title),1);
+       docs[0].cart.splice( docs[0].cart.findIndex(x => x.volumeInfo.title == book.volumeInfo.title),1);
         collection.update({_id:id},docs[0],function(e,d){
              console.log('success');
         })
     })
 })
+router.post('/clearCart/:user_id',function(req,res,next){
+ var db = req.db;
+    var collection = db.get('users');
+    var id = req.params.user_id;
+    collection.find({ _id: id }, {}, function(e, docs) {
+        docs[0].cart=[];
+        collection.update({_id:id},docs[0],function(e,docs){
+            console.log('success')
+             res.json({msg:'success'});
+        })
+    })
+})
 // POST to user favourite books
 router.post('/fav/:user_id', function(req,res,next) {
-    console.log('vliza')
     var db = req.db;
     var collection = db.get('users');
     var id = req.params.user_id;
