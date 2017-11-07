@@ -21,7 +21,6 @@ router.put('/:book_id',function(req,res,next){
   var bookId = req.params.book_id;
   var username=req.session.username;
   var userId = req.session.userId;
-  console.log(req.session)
   
   var comment=new Comments(title,rating,username,text,bookId);
 

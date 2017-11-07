@@ -138,7 +138,7 @@ router.post('/fav/remove/:user_id', function(req,res,next) {
     var collection = db.get('users');
     var id = req.params.user_id;
     var book = req.body.book;
-    console.log(book)
+    
     collection.find({ _id: id }, {}, function(e, docs) {
         
         if(!docs[0].favouriteBooks.some(function(x){
@@ -170,14 +170,16 @@ router.post('/', function(req, res, next) {
     collection.find({email: email}).then(function(data) {
        
         if(data.length == 0 || data === null) {
-            
             res.json({success: false, message: 'Incorect email or password !'})
         } else {
+
             if(bcrypt.compareSync(password, data[0].password)) {
                 req.session.userId = data[0]._id
                 req.session.username=data[0].username;
                 
                 res.json({success: true, message: 'Successful login',user: req.session.userId})
+            } else {
+                res.json({success: false, message: 'Incorect password !'})
             }
         }
         

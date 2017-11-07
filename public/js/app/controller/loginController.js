@@ -6,7 +6,6 @@ angular.module('loginController', [])
         $scope.errorMsg = false;
        
         $http.post('/login', loginData).then(function(data) {
-            console.log(data)
            if(data.data.success) {
                 $scope.successMsg = data.data.message
 

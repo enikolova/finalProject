@@ -18,7 +18,6 @@ router.get('/:author_name', function(req, res, next) {
     
     var name = req.params.author_name;
     collection.find({name: name }, {}, function(e, docs) {
-        console.log(docs);
         res.json(docs[0]);
 
         

@@ -1,5 +1,5 @@
-angular.module('mainController', [])
-.controller('mainController',function($http, $scope) {
+angular.module('mainController', ['mainService'])
+.controller('mainController',function($http, $scope, $location, Main) {
     $scope.loading = true;
     
      $scope.isAdmin=function(){
@@ -10,7 +10,7 @@ angular.module('mainController', [])
          }
      }
     
-    $http.get('http://localhost:4000/books/').then(function(docs) {   
+    Main.getBooks().then(function(docs) {   
     $scope.books = docs.data.filter(x => x.volumeInfo.averageRating == 5);
     $scope.loading = false; 
     $scope.all=docs.data;
@@ -25,10 +25,11 @@ angular.module('mainController', [])
     }
 }
  $scope.logOut = function() {
-     console.log('logaouuuuuuut')
-     $http.post('http://localhost:4000/login/profile/logout').then(function(data) {
-         console.log(data)
+     Main.logOut().then(function(data) {
+         
          sessionStorage.clear()
+         $location.path('#!/')
+
      })
  }
 })

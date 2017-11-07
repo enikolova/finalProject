@@ -1,14 +1,11 @@
-angular.module('advancedSearchController', [])
+angular.module('advancedSearchController', ['advancedSearchService'])
 
-    .controller('advancedSearchController', function ($scope, $http, $location,$rootScope) {
+    .controller('advancedSearchController', function ($scope, $http, $location,$rootScope,AdvancedSearch) {
       
         $scope.searchingForBooks = function (searchData) {
-            console.log(searchData)
-            // $http.post('http://localhost:4000/advancedSearch/', searchData).then(function(data) {
-            //     console.log(data)
-
-            // }) 
-            $http.get('http://localhost:4000/books/').then(function (data) {
+            
+           
+            AdvancedSearch.getBooks().then(function (data) {
                 $scope.searchBooks = data.data;
                 // search by Title
                 if (searchData.title !== undefined && searchData.title !== '' && searchData.title !== null) {
