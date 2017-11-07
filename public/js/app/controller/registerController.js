@@ -1,12 +1,12 @@
-angular.module('registerController', [])
+angular.module('registerController', ['registerService'])
 
-.controller('registerController', function($http, $location, $scope, $timeout) {
+.controller('registerController', function($http, $location, $scope, $timeout, Register) {
     
     $scope.register = function(regData) {
         
         $scope.errorMsg = false;
        
-        $http.post('/registration', regData).then(function(data) {
+        Register.registrate(regData).then(function(data) {
      
            if(data.data.success) {
                 $scope.successMsg = data.data.message

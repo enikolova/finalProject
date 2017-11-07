@@ -13,8 +13,7 @@
                                 <input name = 'username' class="input is-large" type="text" placeholder="Your Name" autofocus="" ng-model = 'regData.username' required ng-minlength="3" ng-maxlength="15">
                                 <p ng-show = '!regForm.username.$pristine'>
                                         <p class = 'errorMsg' ng-show = 'regForm.username.$error.minlength'>Name too short</p>
-                                        <p class = 'errorMsg' ng-show = 'regForm.username.$error.maxlength'>Name too big</p>
-                                        <p class = 'errorMsg' ng-show = 'regForm.username.$error.required'>Name is required</p>         
+                                        <p class = 'errorMsg' ng-show = 'regForm.username.$error.maxlength'>Name too big</p>      
                                 </p> 
                             </div>
                         </div>
