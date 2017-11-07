@@ -1,5 +1,5 @@
 angular.module('shoppingCartController', [])
-.controller('shoppingCartController',function($http, $scope) {
+.controller('shoppingCartController',function($http, $scope,$location) {
     var userId=sessionStorage.getItem('user');
     $scope.loadCart=function(){
  $http.get('http://localhost:4000/login/show/cart/'+userId).then(function(data){
@@ -25,5 +25,11 @@ $scope.loadCart()
      $http.post('http://localhost:4000/login/remove/'+userId ,{book : $scope.bookk}).then(function(){
         $scope.loadCart();
      })
+ }
+ $scope.clear=function(){
+     $http.post('http://localhost:4000/login/clearCart/'+userId).then(function(){
+         $location.path("successfulBuy")
+     })
+    
  }
 })
