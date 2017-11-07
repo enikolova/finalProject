@@ -7,26 +7,44 @@
                     <figure class="avatar">
                         <img src="../img/logo3.png">
                     </figure>
-                    <form ng-submit = 'register(regData)' >
+                    <form name = 'regForm' ng-submit = 'register(regData)' >
                         <div class="field">
                             <div class="control">
                                 <input name = 'username' class="input is-large" type="text" placeholder="Your Name" autofocus="" ng-model = 'regData.username' required ng-minlength="3" ng-maxlength="15">
+                                <p ng-show = '!regForm.username.$pristine'>
+                                        <p class = 'errorMsg' ng-show = 'regForm.username.$error.minlength'>Name too short</p>
+                                        <p class = 'errorMsg' ng-show = 'regForm.username.$error.maxlength'>Name too big</p>
+                                        <p class = 'errorMsg' ng-show = 'regForm.username.$error.required'>Name is required</p>         
+                                </p> 
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
                                 <input name = 'email' class="input is-large" type="email" placeholder="Your Email" autofocus="" ng-model = 'regData.email' required ng-minlength="3" ng-maxlength="15">
+                                <p ng-show = '!regForm.email.$pristine'>
+                                        <p class = 'errorMsg' ng-show = 'regForm.email.$error.required && regForm.email.$touched'>Email is required</p>         
+                                </p> 
                             </div>
                         </div>
 
                         <div class="field">
                             <div class="control">
-                                <input name = 'password' class="input is-large" type="password" placeholder="Your Password" ng-model = 'regData.password' required>
+                                <input name = 'password' class="input is-large" type="password" placeholder="Your Password" ng-model = 'regData.password' required ng-minlength="6" ng-maxlength="15">
+                                <p ng-show = '!regForm.password.$pristine'>
+                                        <p class = 'errorMsg' ng-show = 'regForm.password.$error.minlength'>Password is too short</p>
+                                        <p class = 'errorMsg' ng-show = 'regForm.password.$error.maxlength'>Password is too big</p>
+                                        <p class = 'errorMsg' ng-show = 'regForm.password.$error.required && regForm.password.$touched'>Password is required</p>         
+                                </p> 
                             </div>
                         </div>
                         <div class="field">
                                 <div class="control">
-                                    <input name = 'repeatPassword' class="input is-large" type="password" placeholder="Repeat your Password" ng-model = 'regData.repeatPassword' required>
+                                    <input name = 'repeatPassword' class="input is-large" type="password" placeholder="Repeat your Password" ng-model = 'regData.repeatPassword'  ng-minlength="6" ng-maxlength="15" required>
+                                <p ng-show = '!regForm.repeatPassword.$pristine'>
+                                    <p class = 'errorMsg' ng-show = 'regForm.repeatPassword.$error.minlength'>Password is too short</p>
+                                    <p class = 'errorMsg' ng-show = 'regForm.repeatPassword.$error.maxlength'>Password is too big</p>
+                                    <p class = 'errorMsg' ng-show = 'regForm.repeatPassword.$error.required && regForm.repeatPassword.$touched'>Password is required</p>         
+                                </p> 
                                 </div>
                             </div>
                         <button type = 'submit' class="button is-block is-info is-large" style = 'width:100%'>Sign Up</button>
