@@ -1,0 +1,63 @@
+  <section class="hero is-orange">
+        <div class="hero-body animated rubberBand">
+        <div class="container has-text-centered">
+            <h1 class="title">Shopping Cart</h1>
+        </div>
+        </div>
+    </section>
+    <table class="table is-bordered is-striped is-narrow is-fullwidth">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>All</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="book in cart">
+                <td>
+                    <div class="columns">
+                        <div class="column">
+                            <img class='image level-left imgBook' ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" width='100px' alt="">
+                        </div>
+                        <div class="column">
+                            <p class="subtitle"> {{book.volumeInfo.title}}</p>
+                            <p>By {{book.volumeInfo.author[0]}}</p>
+                        </div>
+                    </div>
+
+                </td>
+                <td>
+                    <input type="number" class="input" min="1" ng-init="1"  ng-model="book.count">
+                </td>
+                <td>
+                    <p>{{book.saleInfo.listPrice.amount}} {{book.saleInfo.listPrice.currencyCode}}</p>
+                </td>
+                    <td>
+                        <p ng-model="all ">{{(book.saleInfo.listPrice.amount * book.count).toFixed(2)}} {{book.saleInfo.listPrice.currencyCode}}</p>
+                    </td>
+                    <td>
+                        <span class="button is-danger animated zoomInRight" ng-click="removeFromCart(book)">Delete</span>
+                    </td>
+            </tr> 
+            
+        </tbody>
+    </table>
+    <div class="level-right">
+        <div class="columns is-6">
+    <div class="column is-8">
+        <div>Price of all books: </div>
+        <div>Shipping: </div>
+         <div>All:</div>
+    </div>
+    <div class="column is-7">
+        <div>{{getTotal()}} BGN </div>
+        <div>5</div>
+        <div>{{+getTotal()+5}} BGN  </div>
+    </div> 
+    </div>
+    </div>
+    <div class="level-right">
+    <span class="button is-success">Continue</span>
+    </div>

@@ -120,4 +120,22 @@ angular.module('bookController', [])
                 });
             }, 0);
 
+        $scope.addInCart=function(){
+               var userId = sessionStorage.getItem('user')
+            $http.post('http://localhost:4000/login/cart/'+userId,{ book: $scope.book }).then(function(data){
+                 if (data.data.success) {
+
+                    $scope.successMsg = data.data.message;
+                    $timeout(function () {
+                        $scope.successMsg = ''
+                    }, 2000)
+                } else {
+                    $scope.errorMsg = data.data.message;
+                    $timeout(function () {
+                        $scope.errorMsg = ''
+                    }, 2000)
+                }
+            })
+          
+        }
     });

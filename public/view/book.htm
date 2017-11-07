@@ -40,7 +40,7 @@
             </p>
             <br>
             <a href="" ng-if="!book.saleInfo.listPrice.amount" class="buyBookBtn button is-info subtitle " disabled> Add to cart</a>
-            <a href="" ng-if="book.saleInfo.listPrice.amount" class='buyBookBtn button is-info  subtitle '>Add to cart</a>
+            <a href="" ng-if="book.saleInfo.listPrice.amount" class='buyBookBtn button is-info  subtitle ' ng-click="addInCart()">Add to cart</a>
             <a href="" class='buyBookBtn button is-info  subtitle ' ng-show = '!book.isFav' ng-click = 'addToFavourite()' >Add to favourites</a> 
             <a href="" class='buyBookBtn button is-info  subtitle ' ng-show = 'book.isFav' ng-click = 'removeFromFavourite()' >Remove from favourites</a> 
             <span ng-show = 'successMsg' class='successMsg msgBook is-success' >{{successMsg}}</span>

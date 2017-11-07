@@ -7,6 +7,7 @@ var User = function(username,email, password) {
         this.email = email;
         this.password = password;
         this.comments = [];
+        this.cart = [];
         this.favouriteBooks = [];
         
 
