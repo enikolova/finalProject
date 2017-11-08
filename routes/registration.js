@@ -20,7 +20,7 @@ router.post('/', function(req, res, next) {
                 
               var user = new User(username, email, password);
               if(!user) {
-                res.json({success: true,message: "User not created !"})
+                res.json({success: false,message: "User not created !"})
               } else {
                 collection.insert(user);
                 res.json({success: true,message: "Succesful registration !"})

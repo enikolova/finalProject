@@ -4,7 +4,7 @@ angular.module('shoppingCartController', ['shoppingCartService'])
     $scope.loadCart=function(){
  ShoppingCart.loadCart(userId).then(function(data){
     
-     $scope.cart=data.data;
+      $scope.cart=data.data;
       $scope.cart.forEach(function(book) {
            book.count =1;
      });
@@ -20,10 +20,15 @@ $scope.loadCart()
      return total.toFixed(2);
  }
  $scope.removeFromCart=function(book){
-     $scope.book=book;
-   ShoppingCart.remove(userId,{book: $scope.book}).then(function(){
-        $scope.loadCart();
-     })
+    console.log(book);
+   ShoppingCart.remove(userId,{book: book}).then(function(){
+        // $scope.loadCart();
+        $scope.cart = $scope.cart.filter(function(b) {
+            return b._id != book._id;
+         });
+         console.log(book);
+         console.log($scope.cart);
+     });
  }
  $scope.clear=function(){
     ShoppingCart.clearCart(userId).then(function(){

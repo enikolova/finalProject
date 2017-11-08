@@ -8,7 +8,6 @@ angular.module('loginController', ['loginService'])
             Login.login(loginData).then(function (data) {
                 if (data.data.success) {
                     $scope.successMsg = data.data.message
-
                     //redirect to home
                     $timeout(function () {
                         $location.path('#!/')
