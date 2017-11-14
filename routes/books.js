@@ -5,9 +5,26 @@ router.delete('/book/remove/:book_id',function(req,res,next){
 
     var db=req.db;
     var collection=db.get('books');
+    var users = db.get('users')
      var id = req.params.book_id;
+     console.log(id)
      collection.remove({_id:id},function(e,docs){
-         res.send('success');
+         users.find({},{}, function(e,data) {
+          
+            data.forEach(function(user) {
+                console.log(user.favouriteBooks.findIndex(x => x._id = id))
+                if(user.favouriteBooks.findIndex(x => x._id = id) !== -1) {
+                user.favouriteBooks.splice(user.favouriteBooks.findIndex(x => x._id = id), 1)
+                
+                }
+                users.update({_id: user._id}, {favouriteBooks: user.favouriteBooks}, function() {
+                  console.log(user.favouriteBooks)
+                })
+            })
+            res.json('success')
+           
+         })
+         
      })
 })
 router.put('/',function(req,res,next){

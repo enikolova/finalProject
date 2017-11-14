@@ -8,6 +8,7 @@ Admin.allBooks().then(function(docs) {
  } 
   $scope.allBooks();
   $scope.deleteBook=function(bookId){
+    
       Admin.deleteBook(bookId).then(function(){
           $scope.s.volumeInfo.title=''
         $scope.allBooks();
@@ -23,6 +24,8 @@ $scope.allUser();
 $scope.deleteUser=function(userId){
    Admin.deleteUser(userId).then(function(docs) {  
         $scope.allUser();
+        
 })
+
 }
 })
