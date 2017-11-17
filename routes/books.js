@@ -5,9 +5,30 @@ router.delete('/book/remove/:book_id',function(req,res,next){
 
     var db=req.db;
     var collection=db.get('books');
+    var users = db.get('users')
      var id = req.params.book_id;
+     console.log(id)
      collection.remove({_id:id},function(e,docs){
-         res.send('success');
+         users.find({},{}, function(e,data) {
+           console.log(data)
+            data.forEach(function(user) {
+                if(user.favouriteBooks.findIndex(x => x._id = id) !== -1) {
+                user.favouriteBooks = user.favouriteBooks.filter(function(book) {
+                    return book._id !== id
+                })
+                console.log(user.favouriteBooks)
+                
+                
+                users.update({_id: user._id}, user, function(err, data) {
+                    console.log('zamenihme edna')
+                  })
+                }
+            })
+             
+           res.json('sss')
+           
+         })
+         
      })
 })
 router.put('/',function(req,res,next){

@@ -7,11 +7,15 @@ angular.module('advancedSearchController', ['advancedSearchService'])
            
             AdvancedSearch.getBooks().then(function (data) {
                 $scope.searchBooks = data.data;
-                // search by Title
+                //search by Title
                 if (searchData.title !== undefined && searchData.title !== '' && searchData.title !== null) {
                     $scope.searchBooks = $scope.searchBooks.filter(function (book) {
                         if (book.volumeInfo.title !== undefined && book.volumeInfo.title !== '' || book.volumeInfo.title !== undefined) {
-                            return book.volumeInfo.title.toUpperCase() === searchData.title.toUpperCase()
+                            let title = searchData.title.trim().split('').join('').toUpperCase();
+                            let bookTitle = book.volumeInfo.title.split(' ').join('').toUpperCase();
+                            if(bookTitle.indexOf(title) !== -1) {
+                            return book
+                            }
                         }
                     })
                     
@@ -23,13 +27,15 @@ angular.module('advancedSearchController', ['advancedSearchService'])
                     
                         $scope.searchBooks = $scope.searchBooks.filter(function (book) {
                 
-                            if(book.volumeInfo.authors !== undefined) {
-                                if (book.volumeInfo.authors.some(function (x) {
-                                    return x.split('').join('').toUpperCase() == searchData.author.split('').join('').toUpperCase()
-                                })) {
-                                    return book;
+                                    if(book.volumeInfo.authors !== undefined) {
+                                        let author = searchData.author.trim().split('').join('').toUpperCase();
+                                        let bookAuthor = book.volumeInfo.authors.join('').toUpperCase();
+                                        if(bookAuthor.indexOf(author) !== -1) {
+                                        return book;
+                                    }
+                                    
                                 }
-                            }
+                            
                             
                         })
                 }
@@ -38,7 +44,7 @@ angular.module('advancedSearchController', ['advancedSearchService'])
                     
                         $scope.searchBooks = $scope.searchBooks.filter(function (book) {
                             if(book.volumeInfo.industryIdentifiers && book.volumeInfo.industryIdentifiers[1]){
-                              return book.volumeInfo.industryIdentifiers[1].identifier == searchData.isbn10;
+                              return book.volumeInfo.industryIdentifiers[1].identifier.indexOf(searchData.isbn10) !== -1;
                             }
                         
                           
@@ -51,7 +57,7 @@ angular.module('advancedSearchController', ['advancedSearchService'])
                 if (searchData.isbn13 !== '' && searchData.isbn13 !== null && searchData.isbn13 !== undefined) {
                         $scope.searchBooks = $scope.searchBooks.filter(function (book) {                            
                             if(book.volumeInfo.industryIdentifiers && book.volumeInfo.industryIdentifiers[0]){
-                              return book.volumeInfo.industryIdentifiers[0].identifier == searchData.isbn13;
+                                return book.volumeInfo.industryIdentifiers[0].identifier.indexOf(searchData.isbn13) !== -1;
                             }
                         
                           
@@ -66,7 +72,11 @@ angular.module('advancedSearchController', ['advancedSearchService'])
                         $scope.searchBooks = $scope.searchBooks.filter(function (book) {
                 
                             if(book.volumeInfo.publisher !== undefined) {
-                                    return book.volumeInfo.publisher == searchData.publisher;
+                                let publisher = searchData.publisher.trim().split('').join('').toUpperCase();
+                                let bookPublisher = book.volumeInfo.publisher.split('').join('').toUpperCase();
+                                if(bookPublisher.indexOf(publisher) !== -1) {
+                                return book;
+                                }
                                 
                             }
                             
