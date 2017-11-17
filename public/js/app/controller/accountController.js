@@ -3,6 +3,7 @@ angular.module('accountController', ['accountService'])
     .controller('accountController', function ($scope, $http, Account) {
         var id = sessionStorage.getItem('user')
         $scope.loading = true;
+   
         Account.getBooks().then(function (books) {
             $scope.books = books.data;
             Account.getUser(id).then(function (data) {

@@ -13,6 +13,7 @@
     <div class="tile is-3 is-vertical is-parent">
         <div class="tile is-child box">
             <img class='image level-left imgBook' ng-src="../img/profile.png" width='150px' alt="">
+            <input type="file" ng-change="encodeImageFileAsURL(this)" ng-model="confirmed"/>
             <br>
             <h2 class="subtitle">My profile</h2>
             <p>
