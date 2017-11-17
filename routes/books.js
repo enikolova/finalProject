@@ -10,18 +10,23 @@ router.delete('/book/remove/:book_id',function(req,res,next){
      console.log(id)
      collection.remove({_id:id},function(e,docs){
          users.find({},{}, function(e,data) {
-          
+           console.log(data)
             data.forEach(function(user) {
-                console.log(user.favouriteBooks.findIndex(x => x._id = id))
+                console.log(user)
                 if(user.favouriteBooks.findIndex(x => x._id = id) !== -1) {
-                user.favouriteBooks.splice(user.favouriteBooks.findIndex(x => x._id = id), 1)
-                
-                }
-                users.update({_id: user._id}, {favouriteBooks: user.favouriteBooks}, function() {
-                  console.log(user.favouriteBooks)
+                user.favouriteBooks = user.favouriteBooks.filter(function(book) {
+                    return book._id !== id
                 })
+                console.log(user.favouriteBooks)
+                
+                
+                users.update({_id: user._id}, user, function(err, data) {
+                    console.log('zamenihme edna')
+                  })
+                }
             })
-            res.json('success')
+             
+           res.json('sss')
            
          })
          
