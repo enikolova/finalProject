@@ -12,7 +12,6 @@ router.delete('/book/remove/:book_id',function(req,res,next){
          users.find({},{}, function(e,data) {
            console.log(data)
             data.forEach(function(user) {
-                console.log(user)
                 if(user.favouriteBooks.findIndex(x => x._id = id) !== -1) {
                 user.favouriteBooks = user.favouriteBooks.filter(function(book) {
                     return book._id !== id
