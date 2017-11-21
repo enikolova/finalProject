@@ -1,5 +1,5 @@
 angular.module('mainController', ['mainService'])
-.controller('mainController',function($http, $scope, $location, Main) {
+.controller('mainController',function($http, $scope, $location,$rootScope, Main) {
     $scope.loading = true;
     
      $scope.isAdmin=function(){
@@ -31,5 +31,12 @@ angular.module('mainController', ['mainService'])
          $location.path('#!/')
 
      })
+ }
+ $scope.searchByTitle=function(){
+     console.log($scope.search.volumeInfo.title);
+     $rootScope.allB=$scope.all.filter(x=>x.volumeInfo.title.toLowerCase().indexOf($scope.search.volumeInfo.title.toLowerCase())!==-1);
+     console.log( $rootScope.allB);
+     $scope.search.volumeInfo.title="";
+     
  }
 })

@@ -19,6 +19,11 @@ angular.module('appRoutes', ['ngRoute','authorController']).config(function($rou
         controller: 'advancedSearchController'
         
     })
+     .when('/search', {
+        templateUrl: 'view/searchResult.htm',
+        controller: 'mainController'
+        
+    })
     .when('/successfulBuy', {
         templateUrl: 'view/successfulBuy.htm'
         

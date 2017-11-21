@@ -69,7 +69,7 @@
         </p>
         <div class="control ">
           <input class="input is-normal search" type="text" ng-model="search.volumeInfo.title" placeholder="Title">
-          <a class="button is-orange"> Search</a>
+          <a href="#!/search" class="button is-orange" ng-click="searchByTitle()"> Search</a>
           <div id='find' class="column" ng-show="search.volumeInfo.title.length>0">
             <p ng-show="(all | filter:search).length==0">No results</p>
             <article ng-repeat="book in all | filter:search | limitTo:5">
